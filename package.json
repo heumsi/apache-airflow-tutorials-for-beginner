@@ -1,0 +1,19 @@
+{
+  "name": "airflow-tutorials",
+  "version": "0.0.1",
+  "description": "airflow tutorials for beginner",
+  "main": "index.js",
+  "authors": {
+    "name": "heumsi",
+    "email": "heumsi@naver.com"
+  },
+  "repository": "/airflow-tutorials",
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "vuepress build src"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.5.3"
+  }
+}
