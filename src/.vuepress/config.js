@@ -42,6 +42,7 @@ module.exports = {
           collapsable: false,
           children: [
             ['installation', '설치하기'],
+            ['execution/', '실헹하기'],
           ]
         }
       ]
