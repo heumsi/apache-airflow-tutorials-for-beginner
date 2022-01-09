@@ -41,11 +41,7 @@ module.exports = {
           title: 'Getting Started',
           collapsable: false,
           children: [
-            '에어플로우_설치하기',
-            '에어플로우_실행하기',
-            '에어플로우_웹_UI_간단히_살펴보기',
-            'DAG_작성하기',
-            'DAG_문서화하기',
+            ['installation', '설치하기'],
           ]
         }
       ]
