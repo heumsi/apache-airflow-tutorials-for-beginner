@@ -43,10 +43,15 @@ module.exports = {
           children: [
             ['installation', '설치하기'],
             ['execution/', '실헹하기'],
+            ['writing-dag/', 'DAG 작성하기'],
           ]
         }
       ]
     }
+  },
+
+  markdown: {
+    lineNumbers: true
   },
 
   /**
