@@ -41,10 +41,10 @@ module.exports = {
           title: 'Getting Started',
           collapsable: false,
           children: [
-            ['installation', '설치하기'],
-            ['execution/', '실헹하기'],
-            ['writing-dag/', 'DAG 작성하기'],
-            ['running-dag/', 'DAG 실행하기'],
+            ['01-installation/', '설치하기'],
+            ['02-execution/', '실행하기'],
+            ['03-writing-dag/', 'DAG 작성하기'],
+            ['04-running-dag/', 'DAG 실행하기'],
           ]
         }
       ]

@@ -5,7 +5,7 @@
 
 <br>
 
-## Airflow 웹서버에 접속하기
+## 웹서버 접속하기
 
 웹서버, 스케쥴러를 실행한 이후에 브라우저에서 `localhost:8080` 에 접속하여 로그인합니다.
 
@@ -18,7 +18,7 @@
 $ export AIRFLOW_HOME=.
 $ airflow webserver --port 8080
 
-# 또 다른 셸에서 다음을 입력합니다.
+# 또 다른 셸에서 다음 명령어로 스케줄러를 실행합니다.
 $ export AIRFLOW_HOME=.
 $ airflow scheduler
 ```

@@ -57,7 +57,7 @@ $ pip install pip --upgrade
 
 <br>
 
-## Airflow 설치
+## 패키지 설치
 
 이제 다음처럼 `pip` 를 통해 `apache-airflow` 를 설치합니다.  
 
@@ -65,8 +65,10 @@ $ pip install pip --upgrade
 $ pip install apache-airflow==2.2.3
 ```
 
-> 저는 현 시점 가장 최신 버전인 `2.2.3` 버전을 받았습니다.  
-> Airflow의 최신 버전은 공식 [Github Repo](https://github.com/apache/airflow)에서 확인하실 수 있습니다.
+::: tip
+저는 현 시점 가장 최신 버전인 `2.2.3` 버전을 받았습니다.  
+Airflow의 최신 버전은 공식 [Github Repo](https://github.com/apache/airflow)에서 확인하실 수 있습니다.
+:::
 
 설치가 완료되었습니다!  
 이제 본격적으로 Airflow를 사용해봅시다.
