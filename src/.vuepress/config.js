@@ -45,6 +45,7 @@ module.exports = {
             ['02-execution/', '실행하기'],
             ['03-writing-dag/', 'DAG 작성하기'],
             ['04-running-dag/', 'DAG 실행하기'],
+            ['05-outro/', '마치며']
           ]
         }
       ]
