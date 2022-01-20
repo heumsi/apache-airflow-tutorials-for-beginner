@@ -1,0 +1,28 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.4.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+  - repo: local
+    hooks:
+      - id: black
+        name: black
+        types: [python]
+        language: system
+        entry: black
+  - repo: local
+    hooks:
+      - id: isort
+        name: isort
+        types: [python]
+        language: system
+        entry: isort
+        args: ["--profile", "black"]
+  - repo: local
+    hooks:
+      - id: pycln
+        name: pycln
+        types: [python]
+        language: system
+        entry: pycln

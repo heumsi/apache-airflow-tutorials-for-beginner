@@ -1,0 +1,5 @@
+apache-airflow==2.2.3
+black==21.12b0
+isort==5.10.1
+pycln==v1.1.0
+pre-commit==v2.17.0

@@ -6,9 +6,9 @@
 
 ## DAG이란?
 
-DAG이란 Directed Acyclic Graph의 약자이며 Airflow에서 파이프라인의 단위의 개념이기도 합니다.  
+DAG이란 Directed Acyclic Graph의 약자이며 Airflow에서 파이프라인의 단위의 개념이기도 합니다.
 
-예를 들어봅시다.  
+예를 들어봅시다.
 간단한 ETL (Extract - Transform - Load) 파이프라인은 Airflow에서 다음과 같이 하나의 DAG으로 만들 수 있습니다.
 
 ![image-20220110232821353](./image-20220110232821353.png)
@@ -32,8 +32,8 @@ $ mkdir dags
 $ cd dags
 ```
 
-::: tip	 
-`DAGS_FOLDER` 에 대한 설정은 `$AIRFLOW_HOME` 디렉토리에 있는 `airflow.cfg` 에서 변경할 수 있습니다. 
+::: tip
+`DAGS_FOLDER` 에 대한 설정은 `$AIRFLOW_HOME` 디렉토리에 있는 `airflow.cfg` 에서 변경할 수 있습니다.
 
 다음처럼 `$AIRFLOW_HOME` 디렉토리를 확인해보면 `airflow.cfg` 가 보입니다.
 
@@ -173,12 +173,12 @@ with DAG(
     t1 >> t2
 ```
 
-- `dag_id (str)` 
+- `dag_id (str)`
     - DAG의 이름이자, 식별자입니다.
 - `description (str)`
     - DAG을 설명하는 문구가 들어갑니다.
 -  `start_date (datetime.datetime)`
-    - 언제부터 DAG을 실행할지 정합니다. 
+    - 언제부터 DAG을 실행할지 정합니다.
     - 여기서는 편의상 Airflow가 제공해주는 `dags_ago` 를 썼지만,  `datetime.datetime` 객체로 정확한 날짜를 지정해주는게 일반적입니다.
 - `schedule_interval (datetime.timedelta | str)`
     - DAG이 최초 실행된 이후 어느 시간 간격으로 실행(스케줄링)시킬지 정합니다.
@@ -255,7 +255,7 @@ with DAG(
 - `Operator` 별로 여러 파라미터들이 있지만, 대표적으로 다음 파라미터들은 모든 `Operator`에서 공통적으로 사용합니다.
     - `owner (str)`
         - 실행하는 테스크의 소유자입니다. 보통 담당자 이름을 넣습니다.
-    - `retries (int)` 
+    - `retries (int)`
         - 테스크 실행에 실패한 경우, 재시도할 횟수입니다.
     - `retry_delay (datetime.timedelta)`
         - 재시도 할 때, 재시도하는 시간 간격입니다.
@@ -414,7 +414,7 @@ with DAG(
         retry_delay: timedelta(minutes=5),  # 재시도하는 시간 간격은 5분입니다.
     }
 ) as dag:
- 
+
     # 테스크를 정의합니다.
     # bash 커맨드로 echo hello 를 실행합니다.
     # 기존의 공통 파라미터들은 default_args에 들어갔습니다.
