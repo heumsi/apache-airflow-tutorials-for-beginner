@@ -3,3 +3,4 @@ black==21.12b0
 isort==5.10.1
 pycln==v1.1.0
 pre-commit==v2.17.0
+psycopg2==2.9.3
