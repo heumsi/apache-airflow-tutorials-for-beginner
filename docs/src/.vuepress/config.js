@@ -53,13 +53,13 @@ module.exports = {
         path: '/dags/',
         collapsable: false,
         children: [
-          ['/dags/01-simple-tasks-dag/', '간단한 Task 흐름을 가지는 DAG 작성하기'],
-          ['/dags/02-parallel-tasks-dag/', '병렬 Task 흐름을 가지는 DAG 작성하기'],
-          ['/dags/03-parallel-task-list-dag/', '병렬 Task 흐름을 리스트로 가지는 DAG 작성하기'],
-          ['/dags/04-conditional-tasks-with-branch-dag/', '조건에 따라 다른 Task 흐름을 가지는 DAG 작성하기'],
-          ['/dags/05-conditional-tasks-with-depends-on-past-dag/', '직전 DAG Run의 Task 상태에 따라 Task 실행 여부를 결정하는 DAG 작성하기'],
-          ['/dags/06-conditional-tasks-with-wait-for-downstream-dag/', '직전 DAG Run의 상태에 따라 Task 실행 여부를 결정하는 DAG 작성하기'],
-          ['/dags/07-conditional-tasks-with-trigger-rule-dag/', 'Trigger Rule에 따라 Task 실행 여부를 결정하는 DAG 작성하기'],
+          ['/dags/01-simple-tasks/', '간단한 Task 흐름을 가지는 DAG 작성하기'],
+          ['/dags/02-parallel-tasks/', '병렬 Task 흐름을 가지는 DAG 작성하기'],
+          ['/dags/03-parallel-task-list/', '병렬 Task 흐름을 리스트로 가지는 DAG 작성하기'],
+          ['/dags/04-conditional-tasks-with-branch/', '조건에 따라 다른 Task 흐름을 가지는 DAG 작성하기'],
+          ['/dags/05-conditional-tasks-with-depends-on-past/', '직전 DAG Run의 Task 상태에 따라 Task 실행 여부를 결정하는 DAG 작성하기'],
+          ['/dags/06-conditional-tasks-with-wait-for-downstream/', '직전 DAG Run의 상태에 따라 Task 실행 여부를 결정하는 DAG 작성하기'],
+          ['/dags/07-conditional-tasks-with-trigger-rule/', 'Trigger Rule에 따라 Task 실행 여부를 결정하는 DAG 작성하기'],
         ]
       }
     ]

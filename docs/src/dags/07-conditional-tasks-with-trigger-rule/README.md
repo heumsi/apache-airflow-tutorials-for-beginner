@@ -8,7 +8,7 @@
 
 ## Code
 
-<<< @/../examples/dags/07_conditional_tasks_with_trigger_rule_dag.py
+<<< @/../examples/dags/07_conditional_tasks_with_trigger_rule.py
 
 
 

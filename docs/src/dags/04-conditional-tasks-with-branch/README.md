@@ -8,7 +8,7 @@
 
 ## Code
 
-<<< @/../examples/dags/04_conditional_tasks_with_branch_dag.py
+<<< @/../examples/dags/04_conditional_tasks_with_branch.py
 
 
 

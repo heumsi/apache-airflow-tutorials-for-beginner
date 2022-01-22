@@ -10,7 +10,7 @@
 
 ## Code
 
-<<< @/../examples/dags/06_conditional_tasks_with_wait_for_downstream_dag.py
+<<< @/../examples/dags/06_conditional_tasks_with_wait_for_downstream.py
 
 ## Web UI
 
