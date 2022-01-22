@@ -6,7 +6,7 @@ from airflow.operators.python import PythonOperator
 from airflow.utils.dates import days_ago
 
 with DAG(
-    dag_id="05_conditional_tasks_with_depends_on_past_dag",
+    dag_id="05_conditional_tasks_with_depends_on_past",
     description="Task 흐름에 depends_on_past를 통해 조건문을 가지는 DAG 예제입니다.",
     default_args={
         "owner": "heumsi",

@@ -6,7 +6,7 @@ from airflow.operators.python import PythonOperator
 from pendulum.tz.timezone import Timezone
 
 with DAG(
-    dag_id="07_conditional_tasks_with_trigger_rule_dag",
+    dag_id="07_conditional_tasks_with_trigger_rule",
     description="Task 흐름에 trigger_rule을 통해 조건문을 가지는 DAG 예제입니다.",
     default_args={
         "owner": "heumsi",

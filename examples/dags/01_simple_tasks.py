@@ -6,7 +6,7 @@ from airflow.operators.python import PythonOperator
 from pendulum.tz.timezone import Timezone
 
 with DAG(
-    dag_id="01_simple_tasks_dag",
+    dag_id="01_simple_tasks",
     description="가장 심플한 Task 흐름을 가지는 DAG 예제입니다.",
     default_args={
         "owner": "heumsi",

@@ -6,7 +6,7 @@ from airflow.operators.python import PythonOperator
 from airflow.utils.dates import days_ago
 
 with DAG(
-    dag_id="06_conditional_tasks_with_wait_for_downstream_dag",
+    dag_id="06_conditional_tasks_with_wait_for_downstream",
     description="Task 흐름에 with_wait_for_downstream을 통해 조건문을 가지는 DAG 예제입니다.",
     default_args={
         "owner": "heumsi",

@@ -6,7 +6,7 @@ from airflow.operators.python import PythonOperator
 from pendulum.tz.timezone import Timezone
 
 with DAG(
-    dag_id="03_task_list_dag",
+    dag_id="03_parellel_task_list",
     description="병렬적인 Task를 리스트로 가지는 DAG 예제입니다.",
     default_args={
         "owner": "heumsi",

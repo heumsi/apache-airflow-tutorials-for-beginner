@@ -8,7 +8,7 @@ from airflow.operators.python import BranchPythonOperator, PythonOperator
 from pendulum.tz.timezone import Timezone
 
 with DAG(
-    dag_id="04_conditional_tasks_with_branch_dag",
+    dag_id="04_conditional_tasks_with_branch",
     description="Task 흐름에 Branch를 통해 조건문을 가지는 DAG 예제입니다.",
     default_args={
         "owner": "heumsi",
