@@ -7,7 +7,7 @@ from pendulum.tz.timezone import Timezone
 
 with DAG(
     dag_id="02_parellel_tasks_dag",
-    description="병렬로 테스크 의존성을 실행하는 DAG 예제입니다.",
+    description="병렬적인 테스크 흐름을 가지는 DAG 예제입니다.",
     default_args={
         "owner": "heumsi",
         "retries": 1,

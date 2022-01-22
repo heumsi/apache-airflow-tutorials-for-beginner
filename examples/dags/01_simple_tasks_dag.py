@@ -7,7 +7,7 @@ from pendulum.tz.timezone import Timezone
 
 with DAG(
     dag_id="01_simple_tasks_dag",
-    description="가장 심플한 테스크 의존성을 가지는 DAG 예제입니다.",
+    description="가장 심플한 테스크 흐름을 가지는 DAG 예제입니다.",
     default_args={
         "owner": "heumsi",
         "retries": 1,
