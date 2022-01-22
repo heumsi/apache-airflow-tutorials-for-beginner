@@ -4,7 +4,7 @@
 
 ## 사전 준비사항
 
-Task를 병렬적(Parellel)으로 실행하기 위해서는 다음을 먼저 준비해야 합니다.
+Task를 병렬적(Parallel)으로 실행하기 위해서는 다음을 먼저 준비해야 합니다.
 
 1. Database를 SQLite(default)가 아닌 Database(MySQL, Postgres 등)로 바꿔주기
 2. Executor를 Sequential Executor(default)가 Executor(Local Executor 등)으로 바꿔주기
@@ -116,7 +116,7 @@ $ airflow scheduler
 
 ## Code
 
-<<< @/../examples/dags/02_parellel_tasks_dag.py
+<<< @/../examples/dags/02_parallel_tasks_dag.py
 
 
 
