@@ -39,7 +39,7 @@ module.exports = {
       {
         title: 'Getting Started',
         path: '/getting-started/',
-        collapsable: false,
+        collapsable: true,
         children: [
           ['/getting-started/01-installation/', '설치하기'],
           ['/getting-started/02-execution/', '실행하기'],
@@ -51,15 +51,23 @@ module.exports = {
       {
         title: 'DAG',
         path: '/dags/',
-        collapsable: false,
+        collapsable: true,
         children: [
-          ['/dags/01-simple-tasks/', '간단한 Task 흐름을 가지는 DAG 작성하기'],
-          ['/dags/02-parallel-tasks/', '병렬 Task 흐름을 가지는 DAG 작성하기'],
-          ['/dags/03-parallel-task-list/', '병렬 Task 흐름을 리스트로 가지는 DAG 작성하기'],
-          ['/dags/04-conditional-tasks-with-branch/', '조건에 따라 다른 Task 흐름을 가지는 DAG 작성하기'],
-          ['/dags/05-conditional-tasks-with-depends-on-past/', '직전 DAG Run의 Task 상태에 따라 Task 실행 여부를 결정하는 DAG 작성하기'],
-          ['/dags/06-conditional-tasks-with-wait-for-downstream/', '직전 DAG Run의 상태에 따라 Task 실행 여부를 결정하는 DAG 작성하기'],
-          ['/dags/07-conditional-tasks-with-trigger-rule/', 'Trigger Rule에 따라 Task 실행 여부를 결정하는 DAG 작성하기'],
+          {
+            title: '다양한 Task flow 작성하기',
+            path: '/dags/01-writing-various-task-flows/',
+            collapsable: true,
+            children: [
+              ['/dags/01-writing-various-task-flows/01-simple-task-flow/', '간단한 Task 흐름'],
+              ['/dags/01-writing-various-task-flows/02-parallel-tasks-flow/', '병렬 Task 흐름'],
+              ['/dags/01-writing-various-task-flows/03-parallel-task-list-flow/', '병렬 Task 흐름 리스트'],
+              ['/dags/01-writing-various-task-flows/04-conditional-task-flow-with-branch/', '조건에 따라 다른 Task 흐름'],
+              ['/dags/01-writing-various-task-flows/05-conditional-task-flow-with-depends-on-past/', '직전 DAG Run의 Task 상태에 따라 Task 실행 여부를 결정하기'],
+              ['/dags/01-writing-various-task-flows/06-conditional-task-flow-with-wait-for-downstream/', '직전 DAG Run의 상태에 따라 Task 실행 여부를 결정하기'],
+              ['/dags/01-writing-various-task-flows/07-conditional-task-flow-with-trigger-rule/', 'Trigger Rule에 따라 Task 실행 여부를 결정하기'],
+            ]
+          }
+
         ]
       }
     ]
