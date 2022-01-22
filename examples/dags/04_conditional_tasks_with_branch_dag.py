@@ -26,9 +26,9 @@ with DAG(
     def select_random(task_ids: List[str]) -> str:
         return random.choice(task_ids)
 
-    t1 = PythonOperator(task_id="t1", python_callable=dump)
-    t2 = PythonOperator(task_id="t2", python_callable=dump)
-    t3 = PythonOperator(task_id="t3", python_callable=dump)
+    t1 = PythonOperator(task_id="task_1", python_callable=dump)
+    t2 = PythonOperator(task_id="task_2", python_callable=dump)
+    t3 = PythonOperator(task_id="task_3", python_callable=dump)
     branch = BranchPythonOperator(
         task_id="branch",
         python_callable=select_random,

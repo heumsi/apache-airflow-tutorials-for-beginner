@@ -2,9 +2,8 @@ from datetime import timedelta
 from time import sleep
 
 from airflow import DAG
-from airflow.operators.python import BranchPythonOperator, PythonOperator
+from airflow.operators.python import PythonOperator
 from airflow.utils.dates import days_ago
-from pendulum.tz.timezone import Timezone
 
 with DAG(
     dag_id="06_conditional_tasks_with_wait_for_downstream_dag",
@@ -25,8 +24,10 @@ with DAG(
     def must_fail() -> None:
         raise
 
-    t1 = PythonOperator(task_id="t1", python_callable=dump, wait_for_downstream=True)
-    t2 = PythonOperator(task_id="t2", python_callable=must_fail)
-    t3 = PythonOperator(task_id="t3", python_callable=dump)
+    t1 = PythonOperator(
+        task_id="task_1", python_callable=dump, wait_for_downstream=True
+    )
+    t2 = PythonOperator(task_id="task_2", python_callable=must_fail)
+    t3 = PythonOperator(task_id="task_3", python_callable=dump)
 
     t1 >> t2 >> t3
