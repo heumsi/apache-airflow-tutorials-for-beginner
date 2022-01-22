@@ -68,8 +68,6 @@ dags_folder = ./dags
 `dags` 디렉토리 내부에 다음과 같이 `hello_world.py` 를 작성합니다.
 
 ```python
-# hello_world.py
-
 from datetime import timedelta
 
 from airflow import DAG
