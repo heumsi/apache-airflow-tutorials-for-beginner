@@ -22,9 +22,7 @@ with DAG(
         sleep(3)
 
     task_1 = PythonOperator(task_id="task_1", python_callable=dump)
-
     task_2 = PythonOperator(task_id="task_2", python_callable=dump)
-
     task_3 = PythonOperator(task_id="task_3", python_callable=dump)
 
     task_1 >> task_2 >> task_3
