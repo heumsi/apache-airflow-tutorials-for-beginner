@@ -57,7 +57,8 @@ module.exports = {
           ['/dags/02-parallel-tasks-dag/', '병렬 Task 흐름을 가지는 DAG 작성하기'],
           ['/dags/03-parallel-task-list-dag/', '병렬 Task 흐름을 리스트로 가지는 DAG 작성하기'],
           ['/dags/04-conditional-tasks-with-branch-dag/', '조건에 따라 다른 Task 흐름을 가지는 DAG 작성하기'],
-          ['/dags/05-conditional-tasks-with-depends-on-past-dag/', '직전 DAG Run의 Task 상태에 따라 Task 실행 여부를 결정하는 DAG 작성하기']
+          ['/dags/05-conditional-tasks-with-depends-on-past-dag/', '직전 DAG Run의 Task 상태에 따라 Task 실행 여부를 결정하는 DAG 작성하기'],
+          ['/dags/06-conditional-tasks-with-wait-for-downstream-dag/', '직전 DAG Run의 상태에 따라 Task 실행 여부를 결정하는 DAG 작성하기'],
         ]
       }
     ]
