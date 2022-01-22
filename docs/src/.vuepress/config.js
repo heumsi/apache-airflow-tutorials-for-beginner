@@ -54,7 +54,7 @@ module.exports = {
         collapsable: true,
         children: [
           {
-            title: '다양한 Task flow 작성하기',
+            title: '다양한 Task 흐름 작성하기',
             path: '/dags/01-writing-various-task-flows/',
             collapsable: true,
             children: [
