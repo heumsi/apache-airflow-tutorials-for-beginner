@@ -35,21 +35,29 @@ module.exports = {
     smoothScroll: true,
     logo: "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F72Zk1%2FbtqPysahU2H%2Fdbpj3pZ651K59V8k561FrK%2Fimg.png",
     nav: false,
-    sidebar: {
-      '/getting-started/': [
-        {
-          title: 'Getting Started',
-          collapsable: false,
-          children: [
-            ['01-installation/', '설치하기'],
-            ['02-execution/', '실행하기'],
-            ['03-writing-a-dag/', 'DAG 작성하기'],
-            ['04-running-a-dag/', 'DAG 실행하기'],
-            ['05-outro/', '마치며']
-          ]
-        }
-      ]
-    }
+    sidebar: [
+      {
+        title: 'Getting Started',
+        path: '/getting-started/',
+        collapsable: false,
+        children: [
+          ['/getting-started/01-installation/', '설치하기'],
+          ['/getting-started/02-execution/', '실행하기'],
+          ['/getting-started/03-writing-a-dag/', 'DAG 작성하기'],
+          ['/getting-started/04-running-a-dag/', 'DAG 실행하기'],
+          ['/getting-started/05-outro/', '마치며']
+        ]
+      },
+      {
+        title: 'DAG',
+        path: '/dags/',
+        collapsable: false,
+        children: [
+          ['/dags/01-simple-tasks-dag/', '간단한 Task 흐름을 가지는 DAG 작성하기'],
+          ['/dags/02-parallel-tasks-dag/', '병렬 Task 흐름을 가지는 DAG 작성하기'],
+        ]
+      }
+    ]
   },
 
   markdown: {
