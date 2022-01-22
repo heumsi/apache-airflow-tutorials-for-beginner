@@ -7,7 +7,7 @@ from pendulum.tz.timezone import Timezone
 
 with DAG(
     dag_id="07_conditional_tasks_with_trigger_rule_dag",
-    description="테스크 흐름에 trigger_rule을 통해 조건문을 가지는 DAG 예제입니다.",
+    description="Task 흐름에 trigger_rule을 통해 조건문을 가지는 DAG 예제입니다.",
     default_args={
         "owner": "heumsi",
         "retries": 0,

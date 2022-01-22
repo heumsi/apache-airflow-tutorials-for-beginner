@@ -7,7 +7,7 @@ from airflow.utils.dates import days_ago
 
 with DAG(
     dag_id="05_conditional_tasks_with_depends_on_past_dag",
-    description="테스크 흐름에 depends_on_past를 통해 조건문을 가지는 DAG 예제입니다.",
+    description="Task 흐름에 depends_on_past를 통해 조건문을 가지는 DAG 예제입니다.",
     default_args={
         "owner": "heumsi",
         "retries": 0,

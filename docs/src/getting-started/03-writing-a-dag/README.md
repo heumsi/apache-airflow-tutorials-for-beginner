@@ -91,17 +91,17 @@ with DAG(
     tags=["my_dags"],
 ) as dag:
 
-    # 테스크를 정의합니다.
+    # Task를 정의합니다.
     # bash 커맨드로 echo hello 를 실행합니다.
     t1 = BashOperator(
         task_id="print_hello",
         bash_command="echo Hello",
         owner="heumsi",  # 이 작업의 오너입니다. 보통 작업을 담당하는 사람 이름을 넣습니다.
-        retries=3,  # 이 테스크가 실패한 경우, 3번 재시도 합니다.
+        retries=3,  # 이 Task가 실패한 경우, 3번 재시도 합니다.
         retry_delay=timedelta(minutes=5),  # 재시도하는 시간 간격은 5분입니다.
     )
 
-    # 테스크를 정의합니다.
+    # Task를 정의합니다.
     # python 함수 print_world를 실행합니다.
     t2 = PythonOperator(
         task_id="print_world",
@@ -111,7 +111,7 @@ with DAG(
         retry_delay=timedelta(minutes=5),
     )
 
-    # 테스크 순서를 정합니다.
+    # Task 순서를 정합니다.
     # t1 실행 후 t2를 실행합니다.
     t1 >> t2
 ```
@@ -148,17 +148,17 @@ with DAG(
     tags=["my_dags"],
 ) as dag:
 
-    # 테스크를 정의합니다.
+    # Task를 정의합니다.
     # bash 커맨드로 echo hello 를 실행합니다.
     t1 = BashOperator(
         task_id="print_hello",
         bash_command="echo Hello",
         owner="heumsi",  # 이 작업의 오너입니다. 보통 작업을 담당하는 사람 이름을 넣습니다.
-        retries=3,  # 이 테스크가 실패한 경우, 3번 재시도 합니다.
+        retries=3,  # 이 Task가 실패한 경우, 3번 재시도 합니다.
         retry_delay=timedelta(minutes=5),  # 재시도하는 시간 간격은 5분입니다.
     )
 
-    # 테스크를 정의합니다.
+    # Task를 정의합니다.
     # python 함수 print_world를 실행합니다.
     t2 = PythonOperator(
         task_id="print_world",
@@ -168,7 +168,7 @@ with DAG(
         retry_delay=timedelta(minutes=5),
     )
 
-    # 테스크 순서를 정합니다.
+    # Task 순서를 정합니다.
     # t1 실행 후 t2를 실행합니다.
     t1 >> t2
 ```
@@ -195,9 +195,9 @@ with DAG(
 
 <br>
 
-### 테스크 정의하기
+### Task 정의하기
 
-그 다음으로 테스크를 정의하는 부분을 봅시다.
+그 다음으로 Task를 정의하는 부분을 봅시다.
 
 ```python{11-12,24-42}
 # hello_world.py
@@ -223,17 +223,17 @@ with DAG(
     tags=["my_dags"],
 ) as dag:
 
-    # 테스크를 정의합니다.
+    # Task를 정의합니다.
     # bash 커맨드로 echo hello 를 실행합니다.
     t1 = BashOperator(
         task_id="print_hello",
         bash_command="echo Hello",
         owner="heumsi",  # 이 작업의 오너입니다. 보통 작업을 담당하는 사람 이름을 넣습니다.
-        retries=3,  # 이 테스크가 실패한 경우, 3번 재시도 합니다.
+        retries=3,  # 이 Task가 실패한 경우, 3번 재시도 합니다.
         retry_delay=timedelta(minutes=5),  # 재시도하는 시간 간격은 5분입니다.
     )
 
-    # 테스크를 정의합니다.
+    # Task를 정의합니다.
     # python 함수 print_world를 실행합니다.
     t2 = PythonOperator(
         task_id="print_world",
@@ -243,20 +243,20 @@ with DAG(
         retry_delay=timedelta(minutes=5),
     )
 
-    # 테스크 순서를 정합니다.
+    # Task 순서를 정합니다.
     # t1 실행 후 t2를 실행합니다.
     t1 >> t2
 ```
 
-- 테스크는 Airflow에서 제공하는 여러 `Operator` 로 만들 수 있습니다.
+- Task는 Airflow에서 제공하는 여러 `Operator` 로 만들 수 있습니다.
     - 여기서는 `BashOperator` 와 `PythonOperator` 를 사용했습니다.
 - `BashOperator` 를 통해 `bash` 로 `echo Hello` 작업을 실행시킵니다.
 - `PythonOperator` 를 통해 `print_world()` 함수를 실행시킵니다.
 - `Operator` 별로 여러 파라미터들이 있지만, 대표적으로 다음 파라미터들은 모든 `Operator`에서 공통적으로 사용합니다.
     - `owner (str)`
-        - 실행하는 테스크의 소유자입니다. 보통 담당자 이름을 넣습니다.
+        - 실행하는 Task의 소유자입니다. 보통 담당자 이름을 넣습니다.
     - `retries (int)`
-        - 테스크 실행에 실패한 경우, 재시도할 횟수입니다.
+        - Task 실행에 실패한 경우, 재시도할 횟수입니다.
     - `retry_delay (datetime.timedelta)`
         - 재시도 할 때, 재시도하는 시간 간격입니다.
     - 이 외에도 모든 파라미터를 알고 싶다면 [공식 문서](https://airflow.apache.org/docs/apache-airflow/stable/tutorial.html#example-pipeline-definition)에서 확인해보실 수 있습니다.
@@ -274,7 +274,7 @@ Airflow에서는 수많은 Operator를 제공합니다. 예를 들면 GCP BigQue
 
 <br>
 
-### 테스크 순서 정하기
+### Task 순서 정하기
 
 ```python{45-47}
 # hello_world.py
@@ -300,17 +300,17 @@ with DAG(
     tags=["my_dags"],
 ) as dag:
 
-    # 테스크를 정의합니다.
+    # Task를 정의합니다.
     # bash 커맨드로 echo hello 를 실행합니다.
     t1 = BashOperator(
         task_id="print_hello",
         bash_command="echo Hello",
         owner="heumsi",  # 이 작업의 오너입니다. 보통 작업을 담당하는 사람 이름을 넣습니다.
-        retries=3,  # 이 테스크가 실패한 경우, 3번 재시도 합니다.
+        retries=3,  # 이 Task가 실패한 경우, 3번 재시도 합니다.
         retry_delay=timedelta(minutes=5),  # 재시도하는 시간 간격은 5분입니다.
     )
 
-    # 테스크를 정의합니다.
+    # Task를 정의합니다.
     # python 함수 print_world를 실행합니다.
     t2 = PythonOperator(
         task_id="print_world",
@@ -320,12 +320,12 @@ with DAG(
         retry_delay=timedelta(minutes=5),
     )
 
-    # 테스크 순서를 정합니다.
+    # Task 순서를 정합니다.
     # t1 실행 후 t2를 실행합니다.
     t1 >> t2
 ```
 
-- 정의한 테스크 인스턴스들의 실행 순서를 `>>` 오퍼레이터를 통해 정합니다.
+- 정의한 Task 인스턴스들의 실행 순서를 `>>` 오퍼레이터를 통해 정합니다.
   - 위에서는 `t1` 실행이 완료되면 `t2`를 실행합니다.
   - 이 말인 즉슨, `t1` 이 실행 완료되지 않거나 실패하면 `t2` 가 실행되지 않는다는 의미입니다.
 
@@ -359,17 +359,17 @@ with DAG(
     tags=["my_dags"],
 ) as dag:
 
-    # 테스크를 정의합니다.
+    # Task를 정의합니다.
     # bash 커맨드로 echo hello 를 실행합니다.
     t1 = BashOperator(
         task_id="print_hello",
         bash_command="echo Hello",
         owner="heumsi",  # 이 작업의 오너입니다. 보통 작업을 담당하는 사람 이름을 넣습니다.
-        retries=3,  # 이 테스크가 실패한 경우, 3번 재시도 합니다.
+        retries=3,  # 이 Task가 실패한 경우, 3번 재시도 합니다.
         retry_delay=timedelta(minutes=5),  # 재시도하는 시간 간격은 5분입니다.
     )
 
-    # 테스크를 정의합니다.
+    # Task를 정의합니다.
     # python 함수 print_world를 실행합니다.
     t2 = PythonOperator(
         task_id="print_world",
@@ -379,7 +379,7 @@ with DAG(
         retry_delay=timedelta(minutes=5),
     )
 
-    # 테스크 순서를 정합니다.
+    # Task 순서를 정합니다.
     # t1 실행 후 t2를 실행합니다.
     t1 >> t2
 ```
@@ -410,12 +410,12 @@ with DAG(
     tags=["my_dags"],
     default_args={  # 모든 오퍼레이터에 들어갈 공통 파라미터를 정의합니다.
         owner: "heumsi",  # 이 작업의 오너입니다. 보통 작업을 담당하는 사람 이름을 넣습니다.
-        retries: 3,  # 이 테스크가 실패한 경우, 3번 재시도 합니다.
+        retries: 3,  # 이 Task가 실패한 경우, 3번 재시도 합니다.
         retry_delay: timedelta(minutes=5),  # 재시도하는 시간 간격은 5분입니다.
     }
 ) as dag:
 
-    # 테스크를 정의합니다.
+    # Task를 정의합니다.
     # bash 커맨드로 echo hello 를 실행합니다.
     # 기존의 공통 파라미터들은 default_args에 들어갔습니다.
     # 즉 default_args는 모든 오퍼레이터에 주입됩니다.
@@ -424,7 +424,7 @@ with DAG(
         bash_command="echo Hello",
     )
 
-    # 테스크를 정의합니다.
+    # Task를 정의합니다.
     # python 함수 print_world를 실행합니다.
     # 기존의 공통 파라미터들은 default_args에 들어갔습니다.
     # 즉 default_args는 모든 오퍼레이터에 주입됩니다.
@@ -433,7 +433,7 @@ with DAG(
         python_callable=print_world,
     )
 
-    # 테스크 순서를 정합니다.
+    # Task 순서를 정합니다.
     # t1 실행 후 t2를 실행합니다.
     t1 >> t2
 ```
