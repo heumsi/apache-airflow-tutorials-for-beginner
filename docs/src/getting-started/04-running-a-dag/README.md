@@ -5,20 +5,20 @@
 
 <br>
 
-## 웹서버 접속하기
+## Webserver 접속하기
 
-웹서버, 스케쥴러를 실행한 이후에 브라우저에서 `localhost:8080` 에 접속하여 로그인합니다.
+Webserver, 스케쥴러를 실행한 이후에 브라우저에서 `localhost:8080` 에 접속하여 로그인합니다.
 
 :::tip
 
-만약 웹서버와 스케줄러가 내려간 상태라면, 다음처럼 Airflow 스케쥴러와 웹서버를 실행시켜주세요.
+만약 Webserver와 Scheduler가 내려간 상태라면, 다음처럼 Airflow 스케쥴러와 Webserver를 실행시켜주세요.
 
 ```bash
-# 셸에서 다음 명령어로 웹서버를 실행합니다.
+# 셸에서 다음 명령어로 Webserver를 실행합니다.
 $ export AIRFLOW_HOME=.
 $ airflow webserver --port 8080
 
-# 또 다른 셸에서 다음 명령어로 스케줄러를 실행합니다.
+# 또 다른 셸에서 다음 명령어로 Scheduler를 실행합니다.
 $ export AIRFLOW_HOME=.
 $ airflow scheduler
 ```
@@ -156,4 +156,4 @@ DAG을 삭제하고 메인화면으로 와보면 다음처럼 `hello_world` DAG�
 
 여기서 DAG 삭제의 의미는 해당 DAG 파일 자체를 없애버리는 것이 아니라, 해당 DAG의 실행된 DAG Runs 정보 및 메타 정보들을 삭제하는 것임을 알 수 있습니다. (정확히 말하면 DB에서 해당 DAG과 관련된 모든 정보를 삭제합니다.)
 
-만약 웹서버에도 등장하지 않게 완전히 지우고 싶다면, `DAGS_FOLDER` 내에서 해당 DAG 파일까지도 같이 삭제하시면 됩니다.
+만약 Webserver에도 등장하지 않게 완전히 지우고 싶다면, `DAGS_FOLDER` 내에서 해당 DAG 파일까지도 같이 삭제하시면 됩니다.
