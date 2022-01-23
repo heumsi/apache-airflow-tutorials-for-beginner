@@ -83,7 +83,8 @@ module.exports = {
             collapsable: true,
             children: [
               ['/dags/03-visualization-and-documentation-dags/01-task-groups/', 'UI에 Task들을 Group으로 표현하기'],
-              ['/dags/03-visualization-and-documentation-dags/02-labels/', 'UI에 Task 간 Edge에 Label 추가하기']
+              ['/dags/03-visualization-and-documentation-dags/02-labels/', 'UI에 Task 간 Edge에 Label 추가하기'],
+              ['/dags/03-visualization-and-documentation-dags/03-documentation/', 'DAG에 문서화 추가하기'],
             ]
           }
         ]
