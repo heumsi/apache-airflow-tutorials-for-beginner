@@ -7,11 +7,11 @@
 
 ## Webserver 접속하기
 
-Webserver, 스케쥴러를 실행한 이후에 브라우저에서 `localhost:8080` 에 접속하여 로그인합니다.
+Webserver, Scheduler를 실행한 이후에 브라우저에서 `localhost:8080` 에 접속하여 로그인합니다.
 
 :::tip
 
-만약 Webserver와 Scheduler가 내려간 상태라면, 다음처럼 Airflow 스케쥴러와 Webserver를 실행시켜주세요.
+만약 Webserver와 Scheduler가 내려간 상태라면, 다음처럼 Airflow Scheduler와 Webserver를 실행시켜주세요.
 
 ```bash
 # 셸에서 다음 명령어로 Webserver를 실행합니다.
@@ -27,7 +27,7 @@ $ airflow scheduler
 
 ![image-20220111233617011](./image-20220111233617011.png)
 
-`$AIRFLOW_HOME/dags` 디레토리 내에 `hello_world.py` 를 잘 작성했다면, Airflow 웹 UI에서 다음처럼 `hello_world` DAG을 금방 찾을 수 있습니다.
+`$AIRFLOW_HOME/dags` 디레토리 내에 `hello_world.py` 를 잘 작성했다면, Airflow Web UI에서 다음처럼 `hello_world` DAG을 금방 찾을 수 있습니다.
 
 ![image-20220111234022226](./image-20220111234022226.png)
 
@@ -152,7 +152,7 @@ DAG을 삭제하고 메인화면으로 와보면 다음처럼 `hello_world` DAG�
 
 ![image-20220112004132225](./image-20220112004132225.png)
 
-이렇게 다시 등장한 이유는 Airflow Scheduler가 `DAGS_FOLDER` 에서 다시 해당 `hello_world` DAG 파일을 파싱해왔기 때문입니다. 즉 `DAGS_FOLDER` 내에 해당 DAG 파일이 계속 있는 이상, DAG을 삭제해도 웹 UI에는 다시 등장합니다.
+이렇게 다시 등장한 이유는 Airflow Scheduler가 `DAGS_FOLDER` 에서 다시 해당 `hello_world` DAG 파일을 파싱해왔기 때문입니다. 즉 `DAGS_FOLDER` 내에 해당 DAG 파일이 계속 있는 이상, DAG을 삭제해도 Web UI에는 다시 등장합니다.
 
 여기서 DAG 삭제의 의미는 해당 DAG 파일 자체를 없애버리는 것이 아니라, 해당 DAG의 실행된 DAG Runs 정보 및 메타 정보들을 삭제하는 것임을 알 수 있습니다. (정확히 말하면 DB에서 해당 DAG과 관련된 모든 정보를 삭제합니다.)
 

@@ -8,7 +8,7 @@
 
 <<< @/../examples/dags/02_dependencies_between_dags/00_to_be_triggered_by_other_dags.py
 
-작성 후 웹 UI에서 이 DAG을 ON 상태로 둡니다.
+작성 후 Web UI에서 이 DAG을 ON 상태로 둡니다.
 
 ![image-20220123162839172](./image-20220123162839172.png)
 

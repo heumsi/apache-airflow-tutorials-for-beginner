@@ -8,7 +8,7 @@ Airflow를 실행하기 위해서는 다음의 작업들을 해야합니다.
 2. 설정 및 데이터베이스 초기화
 3. 관리자 계정 생성
 4. Webserver 실행
-5. 스케쥴러 실행
+5. Scheduler 실행
 
 <br>
 
@@ -75,7 +75,7 @@ $ airflow users create \
 
 ## Webserver 실행
 
-Airflow Webserver는 웹 페이지를 통하여 UI를 제공합니다.
+Airflow Webserver는 Web UI를 제공합니다.
 Webserver를 실행하기 위해서 셸에서 다음 명령어를 입력합니다.
 
 ```bash
@@ -84,7 +84,7 @@ $ airflow webserver --port 8080
 
 ![image-20220109204105305](./image-20220109204105305.png)
 
-이제 `http://0.0.0.0:8080` 에 접속해보면 다음처럼 Airflow 웹 UI를 볼 수 있습니다.
+이제 `http://0.0.0.0:8080` 에 접속해보면 다음처럼 Airflow Web UI를 볼 수 있습니다.
 
 ![image-20220109204147240](./image-20220109204147240.png)
 
@@ -104,14 +104,14 @@ The scheduler does not appear to be running.
 The DAGs list may not update, and new tasks will not be scheduled.
 ```
 
-스케쥴러를 실행시키지 않았기 때문에 나는 에러 메시지입니다.
-이제 스케쥴러를 실행시켜봅시다.
+Scheduler를 실행시키지 않았기 때문에 나는 에러 메시지입니다.
+이제 Scheduler를 실행시켜봅시다.
 
 <br>
 
-## 스케쥴러 실행
+## Scheduler 실행
 
-Webserver가 사용자에게 UI를 제공한다면, 스케쥴러는 실행해야할 일들의 스케쥴링 작업을 담당합니다. 즉 실제 대부분의 중요한 일들은 스케쥴러가 담당한다고 볼 수 있습니다.
+Webserver가 사용자에게 UI를 제공한다면, Scheduler는 실행해야할 일들의 스케쥴링 작업을 담당합니다. 즉 실제 대부분의 중요한 일들은 Scheduler가 담당한다고 볼 수 있습니다.
 
 이전에 Webserver를 실행시켰던 셸은 그대로 두고, 새로운 셸에 실행합니다.
 Airflow 프로젝트 디렉토리에 진입 후 다음 명령어를 입력합니다.
@@ -129,7 +129,7 @@ $ airflow scheduler
 
 ![image-20220109204654304](./image-20220109204654304.png)
 
-스케쥴러를 정상적으로 실행시켰습니다.
-이제 다시 웹 UI로 돌아가서 새로 고침을 해보면 상단에 Scheduler와 관련된 에러 메시지가 없어진 것을 볼 수 있습니다.
+Scheduler를 정상적으로 실행시켰습니다.
+이제 다시 Web UI로 돌아가서 새로 고침을 해보면 상단에 Scheduler와 관련된 에러 메시지가 없어진 것을 볼 수 있습니다.
 
 ![image-20220109204736758](./image-20220109204736758.png)
