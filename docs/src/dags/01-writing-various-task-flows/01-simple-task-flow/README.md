@@ -8,7 +8,7 @@
 
 ## Code
 
-<<< @/../examples/dags/01_simple_tasks.py
+<<< @/../examples/dags/01_writing_various_task_flows/01_simple_tasks.py
 
 ## Web UI
 

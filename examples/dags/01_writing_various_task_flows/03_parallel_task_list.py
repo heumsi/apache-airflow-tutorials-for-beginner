@@ -15,7 +15,7 @@ with DAG(
     },
     start_date=datetime(2022, 1, 20, tzinfo=Timezone("Asia/Seoul")),
     schedule_interval="@once",
-    tags=["example"],
+    tags=["examples", "01_writing_various_task_flows"],
 ) as dag:
 
     def dump() -> None:

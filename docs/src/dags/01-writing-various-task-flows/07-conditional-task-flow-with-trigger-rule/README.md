@@ -8,7 +8,7 @@
 
 ## Code
 
-<<< @/../examples/dags/07_conditional_tasks_with_trigger_rule.py
+<<< @/../examples/dags/01_writing_various_task_flows/07_conditional_tasks_with_trigger_rule.py
 
 
 

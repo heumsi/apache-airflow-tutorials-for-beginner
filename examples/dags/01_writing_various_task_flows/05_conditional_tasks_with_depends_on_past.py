@@ -15,7 +15,7 @@ with DAG(
     },
     start_date=days_ago(2),
     schedule_interval=timedelta(days=1),
-    tags=["example"],
+    tags=["examples", "01_writing_various_task_flows"],
 ) as dag:
 
     def dump() -> None:

@@ -22,7 +22,7 @@ def get_subdag(parent_dag_id: str, dag_name: str) -> DAG:
         },
         start_date=datetime(2022, 1, 20, tzinfo=Timezone("Asia/Seoul")),
         schedule_interval="@once",
-        tags=["example"],
+        tags=["examples", "01_writing_various_task_flows"],
     ) as dag:
 
         sub_task_start = PythonOperator(task_id=f"sub_task_start", python_callable=dump)
@@ -49,7 +49,7 @@ with DAG(
     },
     start_date=datetime(2022, 1, 20, tzinfo=Timezone("Asia/Seoul")),
     schedule_interval="@once",
-    tags=["example"],
+    tags=["examples", "01_writing_various_task_flows"],
 ) as dag:
 
     task_start = PythonOperator(task_id="task_start", python_callable=dump)

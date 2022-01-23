@@ -16,7 +16,7 @@ with DAG(
     description="My First DAG",  # DAG에 대해 설명합니다.
     start_date=days_ago(2),  # DAG 정의 기준 2일 전부터 시작합니다.
     schedule_interval=timedelta(days=1),  # 1일을 주기로 실행합니다.
-    tags=["example"],
+    tags=["examples"],
 ) as dag:
 
     # Task를 정의합니다.
