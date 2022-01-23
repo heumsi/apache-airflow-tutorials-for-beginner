@@ -67,8 +67,15 @@ module.exports = {
               ['/dags/01-writing-various-task-flows/07-conditional-task-flow-with-trigger-rule/', 'Trigger Rule에 따라 Task 실행 여부를 결정하기'],
               ['/dags/01-writing-various-task-flows/08-subdag/', 'SubDAG 만들기'],
             ]
-          }
-
+          },
+          {
+            title: 'DAG 간 의존성 작성하기',
+            path: '/dags/02-dependencies-between-dags/',
+            collapsable: true,
+            children: [
+              ['/dags/02-dependencies-between-dags/01-trigger-dagrun/', 'DAG에서 다른 DAG Run을 트리거하기'],
+            ]
+          },
         ]
       }
     ]
