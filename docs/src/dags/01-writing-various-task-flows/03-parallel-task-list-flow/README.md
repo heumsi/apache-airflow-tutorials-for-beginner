@@ -1,4 +1,4 @@
-# 병렬 Task 흐름 리스트
+# 병렬 Task 흐름 리스트 작성하기
 
 ## Graph View
 
