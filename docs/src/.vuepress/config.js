@@ -77,8 +77,16 @@ module.exports = {
               ['/dags/02-dependencies-between-dags/02-waiting-tasks-in-another-dagrun/', 'DAG에서 다른 DAG Run의 Task를 기다리기'],
             ]
           },
+          {
+            title: 'DAG을 시각화와 문서화하기',
+            path: '/dags/03-visualization-and-documentation-dags/',
+            collapsable: true,
+            children: [
+              ['/dags/03-visualization-and-documentation-dags/01-task-groups/', 'UI에 Task들을 Group으로 표현하기'],
+            ]
+          }
         ]
-      }
+      },
     ]
   },
 
