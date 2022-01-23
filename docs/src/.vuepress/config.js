@@ -74,6 +74,7 @@ module.exports = {
             collapsable: true,
             children: [
               ['/dags/02-dependencies-between-dags/01-trigger-dagrun/', 'DAG에서 다른 DAG Run을 트리거하기'],
+              ['/dags/02-dependencies-between-dags/02-waiting-tasks-in-another-dagrun/', 'DAG에서 다른 DAG Run의 Task를 기다리기'],
             ]
           },
         ]
