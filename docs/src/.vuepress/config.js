@@ -65,6 +65,7 @@ module.exports = {
               ['/dags/01-writing-various-task-flows/05-conditional-task-flow-with-depends-on-past/', '직전 DAG Run의 Task 상태에 따라 Task 실행 여부를 결정하기'],
               ['/dags/01-writing-various-task-flows/06-conditional-task-flow-with-wait-for-downstream/', '직전 DAG Run의 상태에 따라 Task 실행 여부를 결정하기'],
               ['/dags/01-writing-various-task-flows/07-conditional-task-flow-with-trigger-rule/', 'Trigger Rule에 따라 Task 실행 여부를 결정하기'],
+              ['/dags/01-writing-various-task-flows/08-subdag/', 'SubDAG 만들기'],
             ]
           }
 
