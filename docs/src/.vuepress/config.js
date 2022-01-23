@@ -78,7 +78,7 @@ module.exports = {
             ]
           },
           {
-            title: 'DAG을 시각화와 문서화하기',
+            title: 'DAG 시각화와 문서화하기',
             path: '/dags/03-visualization-and-documentation-dags/',
             collapsable: true,
             children: [
