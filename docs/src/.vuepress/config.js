@@ -86,7 +86,15 @@ module.exports = {
               ['/dags/03-visualization-and-documentation-dags/02-labels/', 'UI에 Task 간 Edge에 Label 추가하기'],
               ['/dags/03-visualization-and-documentation-dags/03-documentation/', 'DAG에 문서화 추가하기'],
             ]
-          }
+          },
+          {
+            title: '다양한 Operator 사용해보기',
+            path: '/dags/04-using-various-operators/',
+            collapsable: true,
+            children: [
+              ['/dags/04-using-various-operators/01-bash-operator/', 'BashOperator'],
+            ]
+          },
         ]
       },
     ]
