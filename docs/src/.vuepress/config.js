@@ -93,6 +93,7 @@ module.exports = {
             collapsable: true,
             children: [
               ['/dags/04-using-various-operators/01-bash-operator/', 'BashOperator'],
+              ['/dags/04-using-various-operators/02-python-operator/', 'PythonOperator'],
             ]
           },
         ]
