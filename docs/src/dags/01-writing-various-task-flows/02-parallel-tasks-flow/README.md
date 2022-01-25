@@ -2,7 +2,7 @@
 
 
 
-## 사전 준비사항
+## 사전 준비
 
 Task를 병렬적(Parallel)으로 실행하기 위해서는 다음을 먼저 준비해야 합니다.
 
@@ -50,7 +50,7 @@ c0b60f349279   postgres:13   "docker-entrypoint.s…"   3 minutes ago   Up About
 $ pip install psycopg2
 ```
 
-설치가 완료되면 `AIRFLOW_HOME` 에 있는 경로에서 `airflow.cfg` 파일을 찾습니다. 이 `airflow.cfg` 에서  `sql_alchemy_conn` 를 검색해보면 이 값이 다음처럼 설정이 되어있습니다.
+설치가 완료되면 `$AIRFLOW_HOME` 에 있는 경로에서 `airflow.cfg` 파일을 찾습니다. 이 `airflow.cfg` 에서  `sql_alchemy_conn` 를 검색해보면 이 값이 다음처럼 설정이 되어있습니다.
 
 ```
 sql_alchemy_conn = sqlite:///./airflow.db
@@ -82,7 +82,7 @@ $ airflow db init
 
 ### Local Executor 사용하기
 
- `AIRFLOW_HOME` 에 있는 경로에서 `airflow.cfg` 내에서 `executor` 를 찾습니다. 이 값은 다음처럼 되어있을 것입니다.
+ `$AIRFLOW_HOME` 에 있는 경로에서 `airflow.cfg` 내에서 `executor` 를 찾습니다. 이 값은 다음처럼 되어있을 것입니다.
 
 ```
 executor = SequentialExecutor
