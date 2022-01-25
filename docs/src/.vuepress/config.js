@@ -94,6 +94,7 @@ module.exports = {
             children: [
               ['/dags/04-using-various-operators/01-bash-operator/', 'BashOperator'],
               ['/dags/04-using-various-operators/02-python-operator/', 'PythonOperator'],
+              ['/dags/04-using-various-operators/03-python-virtualenv-operator/', 'PythonVirtualenvOperator'],
             ]
           },
         ]
