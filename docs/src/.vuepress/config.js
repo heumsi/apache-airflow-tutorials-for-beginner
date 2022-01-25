@@ -96,6 +96,7 @@ module.exports = {
               ['/dags/04-using-various-operators/02-python-operator/', 'PythonOperator'],
               ['/dags/04-using-various-operators/03-python-virtualenv-operator/', 'PythonVirtualenvOperator'],
               ['/dags/04-using-various-operators/04-branch-python-operator/', 'BranchPythonOperator'],
+              ['/dags/04-using-various-operators/05-dummy-operator/', 'DummyOperator'],
             ]
           },
         ]
