@@ -3,7 +3,6 @@ from time import sleep
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator
-from airflow.utils.edgemodifier import Label
 from pendulum.tz.timezone import Timezone
 
 with DAG(
