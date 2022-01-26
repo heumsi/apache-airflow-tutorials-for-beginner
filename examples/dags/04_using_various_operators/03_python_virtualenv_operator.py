@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 
 from airflow import DAG
-from airflow.operators.python import PythonOperator, PythonVirtualenvOperator
+from airflow.operators.python import PythonVirtualenvOperator
 from pendulum.tz.timezone import Timezone
 
 with DAG(
