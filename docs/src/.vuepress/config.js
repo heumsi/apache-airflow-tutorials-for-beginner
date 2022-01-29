@@ -101,6 +101,14 @@ module.exports = {
               ['/dags/04-using-various-operators/07-custom-operator/', 'Custom Operator'],
             ]
           },
+          {
+          title: '그 외 다양한 기능 사용해보기',
+          path: '/dags/05-etc-features/',
+          collapsable: true,
+          children: [
+            ['/dags/05-etc-features/01-xcoms/', 'XComs - 테스크 간 데이터 주고받기'],
+          ]
+        },
         ]
       },
     ]
