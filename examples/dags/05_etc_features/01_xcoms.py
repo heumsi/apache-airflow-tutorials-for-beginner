@@ -18,14 +18,14 @@ with DAG(
     tags=["examples", "05_etc_features"],
 ) as dag:
 
-    def push_value_to_xcom(**kwargs):
+    def push_value_to_xcom(**kwargs) -> None:
         task_instance: TaskInstance = kwargs["task_instance"]
         task_instance.xcom_push(key="hello", value="world")
 
-    def return_value_to_xcom():
+    def return_value_to_xcom() -> str:
         return "hello world"
 
-    def pull_value_from_xcom(**kwargs):
+    def pull_value_from_xcom(**kwargs) -> None:
         task_instance: TaskInstance = kwargs["task_instance"]
 
         value_from_pushed = task_instance.xcom_pull(key="hello")
