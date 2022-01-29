@@ -16,12 +16,14 @@
 
 ## Graph View
 
-![img_6.png](./img_6.png)
+![img_8.png](./img_8.png)
 
 ## Code
 
 <<< @/../examples/dags/05_etc_features/02_variables.py
 
 ## Log
+
+![img_9.png](./img_9.png)
 
 ![img_7.png](./img_7.png)

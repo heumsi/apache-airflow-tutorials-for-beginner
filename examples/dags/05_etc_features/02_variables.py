@@ -19,14 +19,36 @@ with DAG(
 ) as dag:
 
     def print_variables() -> None:
-        var = Variable.get(key="hello")
-        print(var)  # hello
+        hello = Variable.get(key="hello")
+        print(hello)  # world
 
-        var = Variable.get(key="not_existing_key", default_var="default value")
-        print(var)  # default value
+        not_existing_key = Variable.get(
+            key="not_existing_key", default_var="default value"
+        )
+        print(not_existing_key)  # default value
 
-        var = Variable.get(key="json_data", deserialize_json=True)
-        print(var["welcome"])  # aiflow
-        print(var["author"])  # heumsi
+        json_data = Variable.get(key="json_data", deserialize_json=True)
+        print(json_data["welcome"])  # aiflow
+        print(json_data["author"])  # heumsi
+
+    def print_variables_through_template(
+        hello: str,
+        author: str,
+        not_existing_key: str,
+    ) -> None:
+        print(hello)  # world
+        print(author)  # heumsi
+        print(not_existing_key)  # default value
 
     task_1 = PythonOperator(task_id="print_variables", python_callable=print_variables)
+    task_2 = PythonOperator(
+        task_id="print_variables_through_templates",
+        python_callable=print_variables_through_template,
+        op_kwargs={
+            "hello": "{{ var.value.hello }}",
+            "author": "{{ var.json.json_data.author }}",
+            "not_existing_key": "{{ var.value.get('not_existing_key', 'default value') }}",
+        },
+    )
+
+    task_1 >> task_2
