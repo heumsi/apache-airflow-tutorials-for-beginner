@@ -108,6 +108,7 @@ module.exports = {
           children: [
             ['/dags/05-etc-features/01-xcoms/', 'XComs - 테스크 간 데이터 주고받기'],
             ['/dags/05-etc-features/02-variables/', 'Variables - 전역 변수 사용하기'],
+            ['/dags/05-etc-features/03-connections-and-hooks/', 'Connections와 Hooks - 외부 시스템과 연결 및 작업하기'],
           ]
         },
         ]
