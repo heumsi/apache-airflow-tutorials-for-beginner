@@ -102,16 +102,24 @@ module.exports = {
             ]
           },
           {
-          title: '그 외 다양한 기능 사용해보기',
-          path: '/dags/05-etc-features/',
-          collapsable: true,
-          children: [
-            ['/dags/05-etc-features/01-xcoms/', 'XComs - 테스크 간 데이터 주고받기'],
-            ['/dags/05-etc-features/02-variables/', 'Variables - 전역 변수 사용하기'],
-            ['/dags/05-etc-features/03-connections-and-hooks/', 'Connections와 Hooks - 외부 시스템과 연결 및 작업하기'],
-            ['/dags/05-etc-features/04-templates/', 'Templates - 동적으로 변수를 넘기는 또다른 방법'],
-          ]
-        },
+            title: '그 외 다양한 기능 사용해보기',
+            path: '/dags/05-etc-features/',
+            collapsable: true,
+            children: [
+              ['/dags/05-etc-features/01-xcoms/', 'XComs - 테스크 간 데이터 주고받기'],
+              ['/dags/05-etc-features/02-variables/', 'Variables - 전역 변수 사용하기'],
+              ['/dags/05-etc-features/03-connections-and-hooks/', 'Connections와 Hooks - 외부 시스템과 연결 및 작업하기'],
+              ['/dags/05-etc-features/04-templates/', 'Templates - 동적으로 변수를 넘기는 또다른 방법'],
+            ]
+          },
+          {
+            title: 'Taskflow API 사용해보기',
+            path: '/dags/06-taskflow-api/',
+            collapsable: true,
+            children: [
+              ['/dags/06-taskflow-api/01-concept/', '개념'],
+            ]
+          },
         ]
       },
     ]
