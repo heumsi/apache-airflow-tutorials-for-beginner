@@ -121,6 +121,7 @@ module.exports = {
               ['/dags/06-taskflow-api/02-custom-dependencies/', '커스텀하게 Task간 의존성 작성하기'],
               ['/dags/06-taskflow-api/03-with-operators/', 'Operator와 함께 사용하기'],
               ['/dags/06-taskflow-api/04-virtualenv/', 'Virtualenv 사용하기'],
+              ['/dags/06-taskflow-api/05-docker/', 'Docker 사용하기'],
             ]
           },
         ]
