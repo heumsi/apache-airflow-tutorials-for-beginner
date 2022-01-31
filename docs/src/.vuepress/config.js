@@ -118,6 +118,7 @@ module.exports = {
             collapsable: true,
             children: [
               ['/dags/06-taskflow-api/01-concept/', '개념'],
+              ['/dags/06-taskflow-api/02-custom-dependencies/', '커스텀하게 Task간 의존성 작성하기'],
             ]
           },
         ]
