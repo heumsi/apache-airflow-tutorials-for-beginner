@@ -1,8 +1,7 @@
 from datetime import datetime
 
 from airflow import DAG
-from airflow.models import TaskInstance, Variable
-from airflow.operators.bash import BashOperator
+from airflow.models import Variable
 from airflow.operators.python import PythonOperator
 from pendulum.tz.timezone import Timezone
 
