@@ -37,7 +37,7 @@ module.exports = {
     nav: false,
     sidebar: [
       {
-        title: 'Getting Started',
+        title: '시작하기',
         path: '/getting-started/',
         collapsable: true,
         children: [

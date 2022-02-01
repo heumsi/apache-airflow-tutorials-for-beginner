@@ -1,3 +1,3 @@
-# Gettings Started
+# 시작하기
 
 Airflow 사용법에 대해 빠르게 알아봅시다.
