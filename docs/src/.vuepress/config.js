@@ -131,6 +131,30 @@ module.exports = {
           },
         ]
       },
+      {
+        title: '아키텍처',
+        path: '/architecture/',
+        collapsable: true,
+        children: []
+      },
+      {
+        title: '배포',
+        path: '/deployment/',
+        collapsable: true,
+        children: []
+      },
+      {
+        title: '운영',
+        path: '/operation/',
+        collapsable: true,
+        children: []
+      },
+      {
+        title: 'FAQ',
+        path: '/faq/',
+        collapsable: true,
+        children: []
+      },
     ]
   },
 
