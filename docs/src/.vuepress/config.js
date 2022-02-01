@@ -124,6 +124,11 @@ module.exports = {
               ['/dags/06-taskflow-api/05-docker/', 'Docker 사용하기'],
             ]
           },
+          {
+            title: 'Providers 사용법 알아보기',
+            path: '/dags/07-providers/',
+            collapsable: true,
+          },
         ]
       },
     ]
