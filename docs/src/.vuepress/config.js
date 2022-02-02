@@ -135,7 +135,9 @@ module.exports = {
         title: '아키텍처',
         path: '/architecture/',
         collapsable: true,
-        children: []
+        children: [
+          ['/architecture/01-overview/', '개요'],
+        ],
       },
       {
         title: '배포',
