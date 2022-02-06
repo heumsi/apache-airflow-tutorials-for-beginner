@@ -157,3 +157,8 @@ DAG 파일을 파싱하고 처리하는 `DagFileProcessorProcess` 프로세스�
 :::tip
 Scheduler에 대한 더 많은 설정은 [공식 문서](https://airflow.apache.org/docs/apache-airflow/stable/configurations-ref.html#scheduler)에서 확인할 수 있습니다.
 :::
+
+## 함께보면 좋은 내용
+
+- [Diving Into Airflow Scheduler](https://blog.kk17.net/post/diving-into-airflow-scheduler/)
+- [Deep dive in to the Airflow scheduler - Airflow Summit 2021](https://www.youtube.com/watch?v=DYC4-xElccE&t=2316s)
