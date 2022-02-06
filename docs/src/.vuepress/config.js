@@ -138,6 +138,7 @@ module.exports = {
         children: [
           ['/architecture/01-overview/', '개요'],
           ['/architecture/02-dag-directory/', 'DAG Directory'],
+          ['/architecture/03-scheduler/', 'Scheduler'],
         ],
       },
       {

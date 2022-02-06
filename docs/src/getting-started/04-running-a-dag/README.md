@@ -154,6 +154,6 @@ DAG을 삭제하고 메인화면으로 와보면 다음처럼 `hello_world` DAG�
 
 이렇게 다시 등장한 이유는 Airflow Scheduler가 `DAGS_FOLDER` 에서 다시 해당 `hello_world` DAG 파일을 파싱해왔기 때문입니다. 즉 `DAGS_FOLDER` 내에 해당 DAG 파일이 계속 있는 이상, DAG을 삭제해도 Web UI에는 다시 등장합니다.
 
-여기서 DAG 삭제의 의미는 해당 DAG 파일 자체를 없애버리는 것이 아니라, 해당 DAG의 실행된 DAG Runs 정보 및 메타 정보들을 삭제하는 것임을 알 수 있습니다. (정확히 말하면 DB에서 해당 DAG과 관련된 모든 정보를 삭제합니다.)
+여기서 DAG 삭제의 의미는 해당 DAG 파일 자체를 없애버리는 것이 아니라, 해당 DAG의 실행된 DAG Runs 정보 및 메타 정보들을 삭제하는 것임을 알 수 있습니다. (정확히 말하면 Database에서 해당 DAG과 관련된 모든 정보를 삭제합니다.)
 
 만약 Webserver에도 등장하지 않게 완전히 지우고 싶다면, `DAGS_FOLDER` 내에서 해당 DAG 파일까지도 같이 삭제하시면 됩니다.
