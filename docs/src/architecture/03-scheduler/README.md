@@ -5,7 +5,7 @@
 Scheduler는 DAG 파일을 파싱하고, 모든 Task와 DAG들을 모니터링하며, Task Instance와 Dag Run들의 스케줄링 및 오케스트레이션을 담당합니다.
 이 외에도 많은 기능을하며, Airflow에서 가장 중요한 컴포넌트라고 할 수 있습니다.
 
-Scheduler는 댜음과 같은 일들을 합니다.
+Scheduler는 다음과 같은 일들을 합니다.
 
 - Dag Directory에서 파일을 처리하고 결과를 얻는 일
 - DAG Run과 Task Instance의 상태를 변경하고 Executor가 실행시킬 큐에 Task를 넣는 일
@@ -25,7 +25,7 @@ Scheduler는 Dag Directory에서 DAG 파일을 모두 읽고 이를 실행한 �
 
 #### DagFileProcessorManager
 
-- 스케줄러에 의해 생성되는 **프로세스**입니다.
+- Scheduler에 의해 생성되는 **프로세스**입니다.
 - 주기적으로 DAG Directory에 있는 모든 파일의 경로(`file_path`)를 변수에(`file_paths`)에 저장합니다.
   - 이 주기는 `dag_dir_list_interval` 설정 값으로 정해지며, 기본 값은 300초입니다.
   - 이 주기를 넘지 않은 채 호출되었다면 이 작업은 스킵합니다.
@@ -35,7 +35,7 @@ Scheduler는 Dag Directory에서 DAG 파일을 모두 읽고 이를 실행한 �
   - 이 주기를 넘지 않은 채 호출되었다면 이 작업은 스킵합니다.
   - 처리해야할 파일 순서는 `file_parsing_sort_mode` 설정 값으로 정해지며, 기본 값은 파일의 수정 일시(`modified_time`)입니다.
   - 이 작업으로 인해 수집한 파일 경로 리스트(`file_paths`) 내에 변경된 DAG 코드 및 처리해야할 DAG들을 Scheduler가 인지할 수 있습니다.
-- 이후 `parsing_loop`라 불리는 무한 루프를 돌며 이 안에서 다음 일들을 진행합니다.
+- 이후 무한 루프를 돌며 다음 일들을 진행합니다.
   - 처리할 파일 경로를 담은 큐(`file_path_queue`)에서 파일 경로(`file_path`)를 하나씩 꺼내어, `DagFileProcessorProcess` 프로세스를 생성하며 넘깁니다.
     - 이 때 `DagFileProcessorProcess` 프로세스의 개수가 특정 개수를 넘지 않도록 합니다.
     - 이 특정 개수는 `parsing_processes` 설정 값으로 정해지며, 기본 값은 2개입니다.
@@ -60,8 +60,8 @@ Scheduler는 Dag Directory에서 DAG 파일을 모두 읽고 이를 실행한 �
 :::tip
 위 내용을 더 깊게 드릴다운 해보고 싶다면 직접 관련 코드를 보시기를 추천합니다.
 
-- https://github.com/apache/airflow/blob/2.2.3/airflow/dag_processing/manager.py
-- https://github.com/apache/airflow/blob/2.2.3/airflow/dag_processing/processor.py
+- [DagFileProcessorAgent, DagFileProcessorManager](https://github.com/apache/airflow/blob/2.2.3/airflow/dag_processing/manager.py)
+- [DagFileProcessorProcess](https://github.com/apache/airflow/blob/2.2.3/airflow/dag_processing/processor.py)
 :::
 
 ### DAG Run과 Task Instance의 상태를 변경하고 Executor가 실행시킬 큐에 Task Instance를 넣는 일
@@ -86,6 +86,74 @@ Scheduler는 `DagFileProcessorManager`를 통해 처리해야할 DAG을 Database
 :::tip
 위 내용을 더 깊게 드릴다운 해보고 싶다면 직접 관련 코드를 보시기를 추천합니다.
 
-- https://github.com/apache/airflow/blob/2.1.3/airflow/jobs/scheduler_job.py
-- https://github.com/apache/airflow/blob/2.1.3/airflow/models/dagrun.py
+- [SchedulerJob](https://github.com/apache/airflow/blob/2.2.3/airflow/jobs/scheduler_job.py)
+- [DAGRun](https://github.com/apache/airflow/blob/2.2.3/airflow/models/dagrun.py)
+:::
+
+## 설정
+
+`$AIRFLOW_HOME/airflow.cfg` 파일에 다음과 같은 설정들을 지정해볼 수 있습니다.
+
+```
+[scheduler]
+catchup_by_default=True
+dag_dir_list_interval=300
+file_parsing_sort_mode=modified_time
+max_dagruns_per_loop_to_schedule=20
+max_dagruns_to_create_per_loop=10
+max_tis_per_query=512
+min_file_process_interval=30
+orphaned_tasks_check_interval=300
+parsing_processes=2
+```
+
+### `catchup_by_default`
+
+`BaseOperator` 생성자의 `catchup` 의 기본 값에 대한 설정값 입니다. 기본적으로 `True`로 설정되어 있습니다.
+
+### `dag_dir_list_interval`
+
+DAG Directory에서 얼마나 자주 새로운 파일을 스캔할지에 대한 주기에 대한 설정값 입니다. 기본 값은 300초 입니다.
+
+### `file_parsing_sort_mode`
+
+파싱할 DAG 파일의 정렬 방법에 대한 설정값 입니다. 정렬 방법은 3가지가 있습니다.
+
+- `modified_time`
+  - 파일의 수정 시간을 기준으로 정렬합니다.
+  - 대규모에서 최근 수정된 DAG를 먼저 구문 분석하는 데 유용합니다.
+- `random_seeded_by_host`
+  - 여러 Scheduler에서 무작위로 정렬하지만 동일한 호스트에서 동일한 순서로 정렬합니다.
+  - 이는 각 Scheduler가 다른 DAG 파일을 구문 분석할 수 있는 HA 모드에서 Scheduler와 함께 실행할 때 유용합니다.
+-alphabetical
+  - 파일명으로 정렬합니다.
+
+기본 값은 `modified_time` 입니다.
+
+### `max_dagruns_per_loop_to_schedule`
+
+Scheuler가 한 번의 루프에서 검사(및 잠금)해야 하는 Dag Run의 촤대 개수에 대한 설정값 입니다. 기본 값은 20개입니다.
+
+### `max_dagruns_to_create_per_loop`
+
+한 번의 Scheduler 루프에서 DAG Run으로 생성할 최대 DAG의 개수에 대한 설정값 입니다. 기본 값은 10개입니다.
+
+### `max_tis_per_query`
+
+Executor가 실행할 Queue에 보낼 `SCHEDULED` 상태의 Task Instance의 최대 개수에 대한 설정값 입니다. 기본 값은 512개 입니다.
+
+### `min_file_process_interval`
+
+스캔한 DAG 파일들에 대해 파싱 및 처리할 주기에 대한 설정값 입니다. 즉 얼마나 자주 DAG File이 업데이트 되었는지를 설정할 수 있습니다. 기본 값은 30초입니다.
+
+### `orphaned_tasks_check_interval`
+
+고아 Task와 Scheduling Job에 대해서 확인하는 주기에 대한 설정값 입니다. 기본값은 300초입니다.
+
+### `parsing_processes`
+
+DAG 파일을 파싱하고 처리하는 `DagFileProcessorProcess` 프로세스의 수에 대한 설정값 입니다. 기본 값은 2개입니다.
+
+:::tip
+Scheduler에 대한 더 많은 설정은 [공식 문서](https://airflow.apache.org/docs/apache-airflow/stable/configurations-ref.html#scheduler)에서 확인할 수 있습니다.
 :::
