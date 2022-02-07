@@ -139,7 +139,15 @@ module.exports = {
           ['/architecture/01-overview/', '개요'],
           ['/architecture/02-dag-directory/', 'DAG Directory'],
           ['/architecture/03-scheduler/', 'Scheduler'],
-          ['/architecture/04-executor/', 'Executor'],
+          // ['/architecture/04-executor/', 'Executor'],
+          {
+            title: 'Executor',
+            path: '/architecture/04-executor/',
+            collapsable: true,
+            children: [
+              ['/architecture/04-executor/01-sequential-executor/', 'Sequential Executor'],
+            ]
+          },
         ],
       },
       {

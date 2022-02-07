@@ -12,11 +12,19 @@ Executor에는 여러 타입이 있는데, 크게 2가지로 나눠볼 수 있�
 각 Executor는 좀 더 세부적으로 다음처럼 나뉩니다.
 
 - Local Executors
-  - Local Executor
   - Sequential Executor
+  - Local Executor
 - Remote Executors
   - Celery Executor
   - Kubernetes Executor
+
+이러한 Executor `$AIRFLOW_HOME/airflow.cfg` 에서 `executor` 설정 값으로 지정해줄 수 있습니다. (기본 값은 Sequential Executor 입니다.)
+
+```
+# $AIRFLOW_HOME/airflow.cfg
+
+executor=SequentialExecutor
+```
 
 이제 각 Executor에 대해 좀 더 자세히 알아봅시다.
 
