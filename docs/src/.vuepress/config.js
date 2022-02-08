@@ -151,6 +151,7 @@ module.exports = {
             ]
           },
           ['/architecture/05-meta-database/', 'Meta Database'],
+          ['/architecture/06-webserver/', 'Webserver'],
         ],
       },
       {
