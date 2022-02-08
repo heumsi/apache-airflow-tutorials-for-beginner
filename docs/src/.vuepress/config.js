@@ -148,6 +148,7 @@ module.exports = {
               ['/architecture/04-executor/01-sequential-executor/', 'Sequential Executor'],
               ['/architecture/04-executor/02-local-executor/', 'Local Executor'],
               ['/architecture/04-executor/03-celery-executor/', 'Celery Executor'],
+              ['/architecture/04-executor/04-kubernetes-executor/', 'Kubernetes Executor'],
             ]
           },
         ],
