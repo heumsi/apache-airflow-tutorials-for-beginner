@@ -139,7 +139,6 @@ module.exports = {
           ['/architecture/01-overview/', '개요'],
           ['/architecture/02-dag-directory/', 'DAG Directory'],
           ['/architecture/03-scheduler/', 'Scheduler'],
-          // ['/architecture/04-executor/', 'Executor'],
           {
             title: 'Executor',
             path: '/architecture/04-executor/',
@@ -151,6 +150,7 @@ module.exports = {
               ['/architecture/04-executor/04-kubernetes-executor/', 'Kubernetes Executor'],
             ]
           },
+          ['/architecture/05-meta-database/', 'Meta Database'],
         ],
       },
       {
