@@ -1,6 +1,6 @@
 # 커맨드로 직접 하나씩 배포하기
 
-이 방법은 airflow cli 커맨드로 airflow 컴포넌트를 직접 하나씩 배포하는 방법입니다.
+이 방법은 airflow cli로 airflow 컴포넌트들을 직접 하나씩 배포하는 방법입니다.
 가장 단순한 배포 방법이며, 이해하기에도 가장 쉬울거라 생각합니다.
 
 ## 프로젝트 세팅
@@ -87,30 +87,6 @@ CONTAINER ID   IMAGE         COMMAND                  CREATED         STATUS    
 c0b60f349279   postgres:13   "docker-entrypoint.s…"   3 minutes ago   Up About a minute   0.0.0.0:5432->5432/tcp   postgre
 ```
 
-### 연결 설정하기
-
-먼저 Postgres Database와 연결할 수 있는 드라이버 관련 파이썬 패키지를 다음처럼 설치합니다.
-
-```bash
-$ pip install psycopg2
-```
-
-설치가 완료되면 `airflow.cfg` 에서 `sql_alchemy_conn` 의 값을 다음처럼 postgres를 사용하도록 변경합니다.
-
-```
-# as-is (기본값)
-# sql_alchemy_conn = sqlite:///./airflow.db
-
-# to-be
-sql_alchemy_conn = postgresql+psycopg2://airflow:1234@localhost:5432/airflow
-```
-
-:::tip
-`sql_alchemy_conn` 의 포맷은 SQLAlchemy에서 Engine 인스턴스를 만들 때 사용하는 URL 포맷입니다. 이에 대한 내용은 [SQLAlchemy 공식 문서](https://docs.sqlalchemy.org/en/14/core/engines.html)에서 확인하실 수 있습니다.
-
-참고로 SQLAlchemy는 파이썬 애플리케이션에서 Database와 연결하기 위해 사용하는 가장 대표적인 라이브러리이며, 수많은 파이썬 오픈소스에서 사용되고 있습니다.
-:::
-
 ### 초기화 하기
 
 설정을 완료했다면, Airflow에서 Database를 다시 초기화 해야 합니다. 다음 명령어로 초기화합니다.
@@ -134,6 +110,30 @@ $ airflow users create \
     --role Admin \
     --email heumsi@naver.com
 ```
+
+### 연결 설정하기
+
+먼저 Postgres Database와 연결할 수 있는 드라이버 관련 파이썬 패키지를 다음처럼 설치합니다.
+
+```bash
+$ pip install psycopg2
+```
+
+설치가 완료되면 `airflow.cfg` 에서 `sql_alchemy_conn` 의 값을 다음처럼 postgres를 사용하도록 변경합니다.
+
+```
+# as-is (기본값)
+# sql_alchemy_conn = sqlite:///./airflow.db
+
+# to-be
+sql_alchemy_conn = postgresql+psycopg2://airflow:1234@localhost:5432/airflow
+```
+
+:::tip
+`sql_alchemy_conn` 의 포맷은 SQLAlchemy에서 Engine 인스턴스를 만들 때 사용하는 URL 포맷입니다. 이에 대한 내용은 [SQLAlchemy 공식 문서](https://docs.sqlalchemy.org/en/14/core/engines.html)에서 확인하실 수 있습니다.
+
+참고로 SQLAlchemy는 파이썬 애플리케이션에서 Database와 연결하기 위해 사용하는 가장 대표적인 라이브러리이며, 수많은 파이썬 오픈소스에서 사용되고 있습니다.
+:::
 
 ## Webserver
 
