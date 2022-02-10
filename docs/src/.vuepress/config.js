@@ -158,7 +158,9 @@ module.exports = {
         title: '배포',
         path: '/deployment/',
         collapsable: true,
-        children: []
+        children: [
+            ['/deployment/02-native/', '커맨드로 직접 하나씩 배포하기'],
+        ]
       },
       {
         title: '운영',
