@@ -62,3 +62,15 @@ services:
     restart: always
     networks:
       - airflow
+  airflow-code-server:
+    container_name: airflow-code-server
+    depends_on:
+      - airflow-init
+    image: codercom/code-server:4.0.2
+    environment:
+      - PASSWORD=1234
+      - HOST=0.0.0.0
+      - PORT=8888
+    volumes:
+      - ./dags:/home/coder/project
+    restart: always

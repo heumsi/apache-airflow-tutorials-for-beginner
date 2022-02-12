@@ -166,6 +166,42 @@ Scheduler Executor는 기본적으로 Sequential Executor로 설정되어 있지
 쿠버네티스 위에서 배포한다면 Kubernetes Executor를 사용하기를 권장합니다.
 :::
 
-## 정리
+## Code Server
 
-Airflow의 각 컴포넌트를 모두 별도의 프로세스로 배포 완료했습니다.
+Code Server는 VSCode의 Web Browser 버전입니다.
+서버에 직접 접속하여 DAG 파일을 작성하지 않고, 이 Code Server를 이용하여 작성할 수 있도록 해봅시다.
+
+다음처럼 Docker 컨테이너로 배포합니다. 이 때 `dags/` 디렉토리를 마운트합니다.
+
+```bash
+$ docker run -it --name code-server \
+    --name airflow-code-server \
+    -d \
+    -v "$(pwd)/dags:/home/coder/project" \
+    -p 8888:8888 \
+    -e PASSWORD=1234 \
+    -e HOST=0.0.0.0 \
+    -e PORT=8888 \
+    codercom/code-server:4.0.2
+```
+
+컨테이너가 제대로 배포되었는지 다음처럼 확인할 수 있습니다.
+
+```bash
+$ docker ps
+
+CONTAINER ID   IMAGE                         COMMAND                  CREATED          STATUS          PORTS                    NAMES
+88608ae21d39   codercom/code-server:latest   "/usr/bin/entrypoint…"   7 seconds ago   Up 6 seconds   8080/tcp, 0.0.0.0:8888->8888/tcp   airflow-code-server
+```
+
+이제 브라우저에서 `http://localhost:8888` 에 접속해봅시다.
+
+![img.png](./img.png)
+
+배포할 때 설정한 비밀번호 `1234` 를 입력합니다. 그러면 아래와 같은 화면이 등장합니다.
+
+![img_2.png](./img_2.png)
+
+왼쪽 Explorer 탭에서 `project` 를 클릭하면, 우리가 마운트한 `dags/` 내 파일이 보입니다.
+
+![img_1.png](./img_1.png)

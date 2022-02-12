@@ -54,6 +54,14 @@ Webserver를 배포합니다.
 
 <<< @/../examples/docker-compose.yml{51-64}
 
+### Code Server
+
+Code Server는
+
+Code Server를 배포합니다.
+
+<<< @/../examples/docker-compose.yml{65-76}
+
 ## 배포
 
 다음 명령어로 `docker-compose.yml` 를 실행합니다.
@@ -69,9 +77,24 @@ $ docker-compose ps
 
       Name                     Command               State            Ports
 ------------------------------------------------------------------------------------
+airflow-code-server   /usr/bin/entrypoint.sh --b ... Up       8080/tcp
 airflow-database    docker-entrypoint.sh postgres    Up       5432/tcp
 airflow-init        /bin/bash -c  \                  Exit 0
                       airflow  ...
 airflow-scheduler   /usr/bin/dumb-init -- /ent ...   Up       8080/tcp
 airflow-webserver   /usr/bin/dumb-init -- /ent ...   Up       0.0.0.0:8080->8080/tcp
 ```
+
+## Code Server
+
+브라우저에서 `http://localhost:8888` 에 접속해봅시다.
+
+![img.png](./img.png)
+
+배포할 때 설정한 비밀번호 `1234` 를 입력합니다. 그러면 아래와 같은 화면이 등장합니다.
+
+![img_2.png](./img_2.png)
+
+왼쪽 Explorer 탭에서 `project` 를 클릭하면, 우리가 마운트한 `dags/` 내 파일이 보입니다.
+
+![img_1.png](./img_1.png)

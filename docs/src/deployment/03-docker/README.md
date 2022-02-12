@@ -169,6 +169,46 @@ e8dd306789f6   apache/airflow:2.2.3-python3.8   "/usr/bin/dumb-init …"   45 se
 ...
 ```
 
+## Code Server
+
+Code Server는 VSCode의 Web Browser 버전입니다.
+서버에 직접 접속하여 DAG 파일을 작성하지 않고, 이 Code Server를 이용하여 작성할 수 있도록 해봅시다.
+
+다음처럼 Docker 컨테이너로 배포합니다. 이 때 `dags/` 디렉토리를 마운트합니다.
+
+```bash
+$ docker run -it --name code-server \
+    --name airflow-code-server \
+    -d \
+    -v "$(pwd)/dags:/home/coder/project" \
+    -p 8888:8888 \
+    -e PASSWORD=1234 \
+    -e HOST=0.0.0.0 \
+    -e PORT=8888 \
+    codercom/code-server:4.0.2
+```
+
+컨테이너가 제대로 배포되었는지 다음처럼 확인할 수 있습니다.
+
+```bash
+$ docker ps
+
+CONTAINER ID   IMAGE                         COMMAND                  CREATED          STATUS          PORTS                    NAMES
+88608ae21d39   codercom/code-server:latest   "/usr/bin/entrypoint…"   7 seconds ago   Up 6 seconds   8080/tcp, 0.0.0.0:8888->8888/tcp   airflow-code-server
+```
+
+이제 브라우저에서 `http://localhost:8888` 에 접속해봅시다.
+
+![img.png](./img.png)
+
+배포할 때 설정한 비밀번호 `1234` 를 입력합니다. 그러면 아래와 같은 화면이 등장합니다.
+
+![img_2.png](./img_2.png)
+
+왼쪽 Explorer 탭에서 `project` 를 클릭하면, 우리가 마운트한 `dags/` 내 파일이 보입니다.
+
+![img_1.png](./img_1.png)
+
 ## 정리
 
 배포한 모든 컨테이너를 확인해보면 다음과 같습니다.
@@ -176,8 +216,9 @@ e8dd306789f6   apache/airflow:2.2.3-python3.8   "/usr/bin/dumb-init …"   45 se
 ```bash
 $ docker ps
 
-CONTAINER ID   IMAGE                            COMMAND                  CREATED              STATUS              PORTS                    NAMES
-e8dd306789f6   apache/airflow:2.2.3-python3.8   "/usr/bin/dumb-init …"   About a minute ago   Up About a minute   0.0.0.0:8080->8080/tcp   airflow-webserver
-bb7e13d1f4c5   apache/airflow:2.2.3-python3.8   "/usr/bin/dumb-init …"   4 minutes ago        Up 4 minutes        8080/tcp                 airflow-scheduler
-42736f3bf287   postgres:13                      "docker-entrypoint.s…"   5 minutes ago        Up 5 minutes        5432/tcp                 airflow-database
+CONTAINER ID   IMAGE                            COMMAND                  CREATED              STATUS              PORTS                              NAMES
+e8dd306789f6   apache/airflow:2.2.3-python3.8   "/usr/bin/dumb-init …"   About a minute ago   Up About a minute   0.0.0.0:8080->8080/tcp             airflow-webserver
+bb7e13d1f4c5   apache/airflow:2.2.3-python3.8   "/usr/bin/dumb-init …"   4 minutes ago        Up 4 minutes        8080/tcp                           airflow-scheduler
+42736f3bf287   postgres:13                      "docker-entrypoint.s…"   5 minutes ago        Up 5 minutes        5432/tcp                           airflow-database
+88608ae21d39   codercom/code-server:latest      "/usr/bin/entrypoint…"   7 seconds ago        Up 6 seconds        8080/tcp, 0.0.0.0:8888->8888/tcp   airflow-code-server
 ```
