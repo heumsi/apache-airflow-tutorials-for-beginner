@@ -60,7 +60,7 @@ Code Server는
 
 Code Server를 배포합니다.
 
-<<< @/../examples/docker-compose.yml{65-76}
+<<< @/../examples/docker-compose.yml{65-80}
 
 ## 배포
 

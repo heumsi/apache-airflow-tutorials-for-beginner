@@ -73,4 +73,8 @@ services:
       - PORT=8888
     volumes:
       - ./dags:/home/coder/project
+    ports:
+      - 8888:8888
     restart: always
+    networks:
+      - airflow
