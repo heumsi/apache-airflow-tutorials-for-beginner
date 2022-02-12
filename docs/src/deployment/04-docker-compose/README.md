@@ -77,7 +77,7 @@ $ docker-compose ps
 
       Name                     Command               State            Ports
 ------------------------------------------------------------------------------------
-airflow-code-server   /usr/bin/entrypoint.sh --b ... Up       8080/tcp
+airflow-code-server   /usr/bin/entrypoint.sh --b ... Up       8080/tcp, 0.0.0.0:8888->8888/tcp
 airflow-database    docker-entrypoint.sh postgres    Up       5432/tcp
 airflow-init        /bin/bash -c  \                  Exit 0
                       airflow  ...
