@@ -153,3 +153,4 @@ airflow.db
 webserver_config.py
 logs/
 airflow-webserver.pid
+data/
