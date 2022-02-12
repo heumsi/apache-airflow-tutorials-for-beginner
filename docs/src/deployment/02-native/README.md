@@ -72,7 +72,7 @@ $ mkdir data
 
 ```bash
 $ docker run \
-  --name airflow-postgres \
+  --name airflow-database \
   -d \
   -p 5432:5432 \
   --network airflow \
@@ -88,7 +88,7 @@ $ docker run \
 $ docker ps
 
 CONTAINER ID   IMAGE         COMMAND                  CREATED         STATUS              PORTS                    NAMES
-c0b60f349279   postgres:13   "docker-entrypoint.s…"   3 minutes ago   Up About a minute   0.0.0.0:5432->5432/tcp   airflow-postgres
+c0b60f349279   postgres:13   "docker-entrypoint.s…"   3 minutes ago   Up About a minute   0.0.0.0:5432->5432/tcp   airflow-database
 ```
 
 ### 초기화 하기

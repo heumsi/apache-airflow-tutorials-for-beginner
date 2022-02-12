@@ -1,7 +1,7 @@
 # Docker로 하나씩 배포하기
 
 이 방법은 Docker로 Airflow 컴포넌트들을 직접 하나씩 배포하는 방법입니다.
-Docker 컨테이너를 통해 각 Airflow 컴포넌트들의 독립된 실행 환경을 구성할 수 있습니다.
+최종적으로 Docker 컨테이너를 통해 각 Airflow 컴포넌트들의 독립된 실행 환경을 구성하게 됩니다.
 
 다만 실제로 배포할 때 이 방법보단, 다음 글에서 다룰 Docker-compose로 배포하는 방법을 더 많이 사용하곤 합니다.
 여기서는 배포 그 자체보다는, Docker-compose로 배포하는 방법을 다루기 전에,
@@ -72,7 +72,7 @@ $ mkdir data
 
 ```bash
 $ docker run \
-  --name airflow-postgres \
+  --name airflow-database \
   -d \
   --network airflow \
   -v $(pwd)/data:/var/lib/postgresql/data \
@@ -87,7 +87,7 @@ $ docker run \
 $ docker ps
 
 CONTAINER ID   IMAGE         COMMAND                  CREATED         STATUS              PORTS                    NAMES
-c0b60f349279   postgres:13   "docker-entrypoint.s…"   3 minutes ago   Up About a minute   5432/tcp   airflow-postgres
+c0b60f349279   postgres:13   "docker-entrypoint.s…"   3 minutes ago   Up About a minute   5432/tcp   airflow-database
 ```
 
 ### 초기화 하기
@@ -99,7 +99,7 @@ $ docker run \
   --name airflow-init \
   --network airflow \
   --entrypoint /bin/bash \
-  -e AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:1234@airflow-postgres:5432/airflow \
+  -e AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:1234@airflow-database:5432/airflow \
   apache/airflow:2.2.3-python3.8 \
   -c " \
     airflow db init && \
@@ -122,7 +122,7 @@ $ docker run \
   --name airflow-scheduler \
   --network airflow \
   -d \
-  -e AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:1234@airflow-postgres:5432/airflow \
+  -e AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:1234@airflow-database:5432/airflow \
   -e AIRFLOW__CORE__EXECUTOR=LocalExecutor \
   apache/airflow:2.2.3-python3.8 \
   airflow scheduler
@@ -156,7 +156,7 @@ $ docker run \
   --network airflow \
   -d \
   -p 8080:8080 \
-  -e AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:1234@airflow-postgres:5432/airflow \
+  -e AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:1234@airflow-database:5432/airflow \
   apache/airflow:2.2.3-python3.8 \
   airflow webserver
 ```
@@ -179,5 +179,5 @@ $ docker ps
 CONTAINER ID   IMAGE                            COMMAND                  CREATED              STATUS              PORTS                    NAMES
 e8dd306789f6   apache/airflow:2.2.3-python3.8   "/usr/bin/dumb-init …"   About a minute ago   Up About a minute   0.0.0.0:8080->8080/tcp   airflow-webserver
 bb7e13d1f4c5   apache/airflow:2.2.3-python3.8   "/usr/bin/dumb-init …"   4 minutes ago        Up 4 minutes        8080/tcp                 airflow-scheduler
-42736f3bf287   postgres:13                      "docker-entrypoint.s…"   5 minutes ago        Up 5 minutes        5432/tcp                 airflow-postgres
+42736f3bf287   postgres:13                      "docker-entrypoint.s…"   5 minutes ago        Up 5 minutes        5432/tcp                 airflow-database
 ```
