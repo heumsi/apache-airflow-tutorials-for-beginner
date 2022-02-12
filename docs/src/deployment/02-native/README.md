@@ -56,35 +56,39 @@ Airflow의 최신 버전은 공식 [Github Repo](https://github.com/apache/airfl
 
 ### 배포하기
 
-여기서는 Database로 PostgreSQL를 하며 Docker를 통해 배포합니다.
+Meta Database로 PostgreSQL를 사용하겠습니다.
+
+:::tip
 만약 이미 배포하여 사용 중인 Database가 있다면, 이 작업은 스킵하셔도 좋습니다.
-
-:::tip
-도커에 대해 처음 들어보시는 분들은 [subicura 님의 초보를 위한 도커 안내서](https://subicura.com/2017/01/19/docker-guide-for-beginners-1.html) 를 읽어보시길 추천드립니다.
 :::
 
-:::tip
-배포하기 위해 배포 환경에 Docker가 미리 설치되어 있어야 합니다.
-Docker가 설치되어 있지 않다면, 아래 내용을 참고하여 Docker를 설치해주세요.
-
-- [Install Docker Desktop on Windows](https://docs.docker.com/desktop/windows/install/)
-- [Install Docker Desktop on Mac](https://docs.docker.com/desktop/mac/install/)
-- [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
-:::
-
-셸을 열어 다음 명령어로 Postgres 컨테이너를 실행합니다.
+Postgres 컨테이너에 Volume 마운트할 디렉토리를 다음처럼 만들어둡니다.
 
 ```bash
-$ docker run --name postgres -e POSTGRES_USER=airflow -e POSTGRES_PASSWORD=1234 -p 5432:5432 postgres:13
+$ mkdir data
 ```
 
-컨테이너가 제대로 동작하는지 또다른 셸에서 다음처럼 확인할 수 있습니다.
+다음 명령어로 Postgres 컨테이너를 실행합니다.
+
+```bash
+$ docker run \
+  --name airflow-postgres \
+  -d \
+  -p 5432:5432 \
+  --network airflow \
+  -v $(pwd)/data:/var/lib/postgresql/data \
+  -e POSTGRES_USER=airflow \
+  -e POSTGRES_PASSWORD=1234 \
+  postgres:13
+```
+
+컨테이너가 제대로 배포되었는지 다음처럼 확인할 수 있습니다.
 
 ```bash
 $ docker ps
 
 CONTAINER ID   IMAGE         COMMAND                  CREATED         STATUS              PORTS                    NAMES
-c0b60f349279   postgres:13   "docker-entrypoint.s…"   3 minutes ago   Up About a minute   0.0.0.0:5432->5432/tcp   postgre
+c0b60f349279   postgres:13   "docker-entrypoint.s…"   3 minutes ago   Up About a minute   0.0.0.0:5432->5432/tcp   airflow-postgres
 ```
 
 ### 초기화 하기
@@ -150,8 +154,17 @@ $ airflow webserver --port 8080
 
 ```bash
 $ export AIRFLOW_HOME=.
+$ export AIRFLOW__CORE__EXECUTOR="LocalExecutor"
 $ airflow scheduler
 ```
+
+:::tip
+Scheduler Executor는 기본적으로 Sequential Executor로 설정되어 있지만,
+운영 환경에서는 적어도 Local Executor를 사용하기를 공식 문서에서 권장하고 있습니다.
+
+작은 규모라면 Local Executor를, 어느 정도 규모가 있다면 Celery Executor를,
+쿠버네티스 위에서 배포한다면 Kubernetes Executor를 사용하기를 권장합니다.
+:::
 
 ## 정리
 

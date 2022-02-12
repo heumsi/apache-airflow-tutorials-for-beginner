@@ -160,6 +160,7 @@ module.exports = {
         collapsable: true,
         children: [
             ['/deployment/02-native/', '커맨드로 직접 하나씩 배포하기'],
+            ['/deployment/03-docker/', 'Docker로 하나씩 배포하기'],
         ]
       },
       {
