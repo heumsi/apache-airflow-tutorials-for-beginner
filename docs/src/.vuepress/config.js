@@ -159,9 +159,10 @@ module.exports = {
         path: '/deployment/',
         collapsable: true,
         children: [
-            ['/deployment/02-native/', '커맨드로 직접 하나씩 배포하기'],
-            ['/deployment/03-docker/', 'Docker로 하나씩 배포하기'],
-            ['/deployment/04-docker-compose/', 'Docker Compose로 한 번에 배포하기'],
+          ['/deployment/02-native/', '커맨드로 직접 하나씩 배포하기'],
+          ['/deployment/03-docker/', 'Docker로 하나씩 배포하기'],
+          ['/deployment/04-docker-compose/', 'Docker Compose로 한 번에 배포하기'],
+          ['/deployment/05-kubernetes/', 'Kubernetes에서 Helm Chart로 배포하기'],
         ]
       },
       {
