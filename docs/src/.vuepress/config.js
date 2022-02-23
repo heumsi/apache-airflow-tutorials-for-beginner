@@ -159,6 +159,7 @@ module.exports = {
         path: '/deployment/',
         collapsable: true,
         children: [
+          ['/deployment/01-cloud-vendor/', 'Cloud Managed 서비스 이용하기'],
           ['/deployment/02-native/', '커맨드로 직접 하나씩 배포하기'],
           ['/deployment/03-docker/', 'Docker로 하나씩 배포하기'],
           ['/deployment/04-docker-compose/', 'Docker Compose로 한 번에 배포하기'],
