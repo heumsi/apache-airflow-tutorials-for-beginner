@@ -41,7 +41,7 @@ dag_id = "08_subdag"
 
 with DAG(
     dag_id=dag_id,
-    description="Task 흐름에 SubDAG을 가지는 DAG 예제입니다.",
+    description="Task 의존성에 SubDAG을 가지는 DAG 예제입니다.",
     default_args={
         "owner": "heumsi",
         "retries": 0,

@@ -54,18 +54,18 @@ module.exports = {
         collapsable: true,
         children: [
           {
-            title: '다양한 Task 흐름 작성하기',
-            path: '/dags/01-writing-various-task-flows/',
+            title: '다양한 Task 의존성 작성하기',
+            path: '/dags/01-writing-various-tasks-dependencies/',
             collapsable: true,
             children: [
-              ['/dags/01-writing-various-task-flows/01-simple-task-flow/', '간단한 Task 흐름 작성하기'],
-              ['/dags/01-writing-various-task-flows/02-parallel-tasks-flow/', '병렬 Task 흐름 작성하기'],
-              ['/dags/01-writing-various-task-flows/03-parallel-task-list-flow/', '병렬 Task 흐름 리스트 작성하기'],
-              ['/dags/01-writing-various-task-flows/04-conditional-task-flow-with-branch/', '조건에 따라 다른 Task 흐름 작성하기'],
-              ['/dags/01-writing-various-task-flows/05-conditional-task-flow-with-depends-on-past/', '직전 DAG Run의 Task 상태에 따라 Task 실행 여부를 결정하기'],
-              ['/dags/01-writing-various-task-flows/06-conditional-task-flow-with-wait-for-downstream/', '직전 DAG Run의 상태에 따라 Task 실행 여부를 결정하기'],
-              ['/dags/01-writing-various-task-flows/07-conditional-task-flow-with-trigger-rule/', 'Trigger Rule에 따라 Task 실행 여부를 결정하기'],
-              ['/dags/01-writing-various-task-flows/08-subdag/', 'SubDAG 만들기'],
+              ['/dags/01-writing-various-tasks-dependencies/01-simple-task-dependency/', '간단한 Task 의존성 작성하기'],
+              ['/dags/01-writing-various-tasks-dependencies/02-parallel-tasks-flow/', '병렬 Task 의존성 작성하기'],
+              ['/dags/01-writing-various-tasks-dependencies/03-parallel-task-list-flow/', '병렬 Task 리스트 의존성 작성하기'],
+              ['/dags/01-writing-various-tasks-dependencies/04-conditional-task-flow-with-branch/', '조건에 따라 다른 Task 의존성 작성하기'],
+              ['/dags/01-writing-various-tasks-dependencies/05-conditional-task-flow-with-depends-on-past/', '직전 DAG Run의 Task 상태에 따라 Task 실행 여부를 결정하기'],
+              ['/dags/01-writing-various-tasks-dependencies/06-conditional-task-flow-with-wait-for-downstream/', '직전 DAG Run의 상태에 따라 Task 실행 여부를 결정하기'],
+              ['/dags/01-writing-various-tasks-dependencies/07-conditional-task-flow-with-trigger-rule/', 'Trigger Rule에 따라 Task 실행 여부를 결정하기'],
+              ['/dags/01-writing-various-tasks-dependencies/08-subdag/', 'SubDAG 만들기'],
             ]
           },
           {
@@ -106,7 +106,7 @@ module.exports = {
             path: '/dags/05-etc-features/',
             collapsable: true,
             children: [
-              ['/dags/05-etc-features/01-xcoms/', 'XComs - 테스크 간 데이터 주고받기'],
+              ['/dags/05-etc-features/01-xcoms/', 'XComs - Task 간 데이터 주고받기'],
               ['/dags/05-etc-features/02-variables/', 'Variables - 전역 변수 사용하기'],
               ['/dags/05-etc-features/03-connections-and-hooks/', 'Connections와 Hooks - 외부 시스템과 연결 및 작업하기'],
               ['/dags/05-etc-features/04-templates/', 'Templates - 동적으로 변수를 넘기는 또다른 방법'],
