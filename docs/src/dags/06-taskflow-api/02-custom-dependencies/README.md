@@ -6,7 +6,7 @@
 
 ## Code
 
-<<< @/../examples/dags/06_taskflow_api/02_custom_dependencies.py
+<<< @/../my-airflow-project/dags/06_taskflow_api/02_custom_dependencies.py
 
 ## Web UI & Logs
 

@@ -116,7 +116,7 @@ $ airflow scheduler
 
 ## Code
 
-<<< @/../examples/dags/01_writing_various_task_flows/02_parallel_tasks.py
+<<< @/../my-airflow-project/dags/01_writing_various_task_flows/02_parallel_tasks.py
 
 
 

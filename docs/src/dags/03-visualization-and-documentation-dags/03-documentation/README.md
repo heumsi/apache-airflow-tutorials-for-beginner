@@ -10,7 +10,7 @@
 
 ## Code
 
-<<< @/../examples/dags/03_visualization_and_documentation_dags/03_documentation.py
+<<< @/../my-airflow-project/dags/03_visualization_and_documentation_dags/03_documentation.py
 
 ## Keywords
 

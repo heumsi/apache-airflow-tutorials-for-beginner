@@ -18,7 +18,7 @@
 
 ## Code
 
-<<< @/../examples/dags/02_dependencies_between_dags/02_waiting_tasks_in_another_dagrun.py
+<<< @/../my-airflow-project/dags/02_dependencies_between_dags/02_waiting_tasks_in_another_dagrun.py
 
 ## Web UI
 

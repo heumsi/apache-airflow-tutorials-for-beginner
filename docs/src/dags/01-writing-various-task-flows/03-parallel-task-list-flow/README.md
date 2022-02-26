@@ -8,7 +8,7 @@
 
 ## Code
 
-<<< @/../examples/dags/01_writing_various_task_flows/03_parallel_task_list.py
+<<< @/../my-airflow-project/dags/01_writing_various_task_flows/03_parallel_task_list.py
 
 
 

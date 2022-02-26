@@ -6,7 +6,7 @@
 
 ## Code
 
-<<< @/../examples/dags/03_visualization_and_documentation_dags/02_labels.py
+<<< @/../my-airflow-project/dags/03_visualization_and_documentation_dags/02_labels.py
 
 ## Keywords
 

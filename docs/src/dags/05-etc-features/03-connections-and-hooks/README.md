@@ -28,7 +28,7 @@ sql_alchemy_conn = postgresql+psycopg2://airflow:1234@localhost:5432/airflow
 
 ## Code
 
-<<< @/../examples/dags/05_etc_features/03_connections_and_hooks.py
+<<< @/../my-airflow-project/dags/05_etc_features/03_connections_and_hooks.py
 
 ## Log
 

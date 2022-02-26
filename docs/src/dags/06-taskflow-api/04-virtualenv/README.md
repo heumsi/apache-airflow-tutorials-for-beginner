@@ -6,7 +6,7 @@
 
 ## Code
 
-<<< @/../examples/dags/06_taskflow_api/04_virtualenv.py
+<<< @/../my-airflow-project/dags/06_taskflow_api/04_virtualenv.py
 
 ## Web UI & Logs
 

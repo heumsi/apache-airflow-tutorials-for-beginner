@@ -14,7 +14,7 @@
 
 ## Code
 
-<<< @/../examples/dags/01_writing_various_task_flows/05_conditional_tasks_with_depends_on_past.py
+<<< @/../my-airflow-project/dags/01_writing_various_task_flows/05_conditional_tasks_with_depends_on_past.py
 
 :::tip
 `depends_on_past` 는 기본적으로 모든 `Operator` 에  `False` 로 설정되어 있습니다. 따라서 이 설정 값을 적용하려면 위 코드처럼 명시적으로 `depends_on_past=True` 로 설정해주어야 합니다.

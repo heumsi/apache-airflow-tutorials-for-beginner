@@ -42,7 +42,7 @@ module.exports = {
         collapsable: true,
         children: [
           ['/getting-started/01-installation/', '설치하기'],
-          ['/getting-started/02-execution/', '실행하기'],
+          ['/getting-started/02-deployment/', '배포하기'],
           ['/getting-started/03-writing-a-dag/', 'DAG 작성하기'],
           ['/getting-started/04-running-a-dag/', 'DAG 실행하기'],
           ['/getting-started/05-outro/', '마치며']

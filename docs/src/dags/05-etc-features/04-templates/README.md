@@ -8,13 +8,13 @@
 
 ### Code
 
-<<< @/../examples/dags/05_etc_features/04_templates.py
+<<< @/../my-airflow-project/dags/05_etc_features/04_templates.py
 
 ## Pre Defined Variables
 
 ### Code
 
-<<< @/../examples/dags/05_etc_features/04_templates.py
+<<< @/../my-airflow-project/dags/05_etc_features/04_templates.py
 
 ### Log
 
@@ -34,7 +34,7 @@ Airflow에 미리 정의된 모든 변수는 [공식 문서](https://airflow.apa
 
 ### Code
 
-<<< @/../examples/dags/05_etc_features/04_templates.py
+<<< @/../my-airflow-project/dags/05_etc_features/04_templates.py
 
 ### Log
 
@@ -54,7 +54,7 @@ Airflow에 미리 정의된 모든 변수는 [공식 문서](https://airflow.apa
 
 ### Code
 
-<<< @/../examples/dags/05_etc_features/04_templates.py
+<<< @/../my-airflow-project/dags/05_etc_features/04_templates.py
 
 ### Log
 
@@ -73,7 +73,7 @@ Airflow에 미리 정의된 모든 변수는 [공식 문서](https://airflow.apa
 
 ### Code
 
-<<< @/../examples/dags/05_etc_features/04_templates.py
+<<< @/../my-airflow-project/dags/05_etc_features/04_templates.py
 
 ### Log
 
@@ -88,7 +88,7 @@ Airflow에 미리 정의된 모든 변수는 [공식 문서](https://airflow.apa
 
 ### Code
 
-<<< @/../examples/dags/05_etc_features/04_templates.py
+<<< @/../my-airflow-project/dags/05_etc_features/04_templates.py
 
 ### Log
 

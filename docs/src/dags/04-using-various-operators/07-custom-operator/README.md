@@ -6,9 +6,9 @@
 
 ## Code
 
-<<< @/../examples/dags/04_using_various_operators/06_custom_operator.py
+<<< @/../my-airflow-project/dags/04_using_various_operators/06_custom_operator.py
 
-<<< @/../examples/dags/04_using_various_operators/06_custom_operator.sql
+<<< @/../my-airflow-project/dags/04_using_various_operators/06_custom_operator.sql
 
 ## Web UI
 

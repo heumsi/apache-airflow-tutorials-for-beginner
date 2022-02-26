@@ -25,7 +25,7 @@ Docker version 20.10.5, build 55c4c88
 
 ## Code
 
-<<< @/../examples/dags/06_taskflow_api/05_docker.py
+<<< @/../my-airflow-project/dags/06_taskflow_api/05_docker.py
 
 ## Web UI & Logs
 

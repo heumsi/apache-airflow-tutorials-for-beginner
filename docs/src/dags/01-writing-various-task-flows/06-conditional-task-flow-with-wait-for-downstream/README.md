@@ -10,7 +10,7 @@
 
 ## Code
 
-<<< @/../examples/dags/01_writing_various_task_flows/06_conditional_tasks_with_wait_for_downstream.py
+<<< @/../my-airflow-project/dags/01_writing_various_task_flows/06_conditional_tasks_with_wait_for_downstream.py
 
 ## Web UI
 

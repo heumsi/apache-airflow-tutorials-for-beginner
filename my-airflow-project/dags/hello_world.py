@@ -12,7 +12,7 @@ def print_world() -> None:
 
 # with 구문으로 DAG 정의를 시작합니다.
 with DAG(
-    dag_id="00_hello_world",  # DAG의 식별자용 아이디입니다.
+    dag_id="hello_world",  # DAG의 식별자용 아이디입니다.
     description="My First DAG",  # DAG에 대해 설명합니다.
     start_date=days_ago(2),  # DAG 정의 기준 2일 전부터 시작합니다.
     schedule_interval=timedelta(days=1),  # 1일을 주기로 실행합니다.
@@ -39,6 +39,6 @@ with DAG(
         retry_delay=timedelta(minutes=5),
     )
 
-    # Task 순서를 정합니다.
+    # Task 의존성(순서)를 정합니다.
     # t1 실행 후 t2를 실행합니다.
     t1 >> t2

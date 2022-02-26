@@ -8,7 +8,7 @@
 
 ## Code
 
-<<< @/../examples/dags/01_writing_various_task_flows/04_conditional_tasks_with_branch.py
+<<< @/../my-airflow-project/dags/01_writing_various_task_flows/04_conditional_tasks_with_branch.py
 
 
 

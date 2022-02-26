@@ -6,7 +6,7 @@
 
 ## Code
 
-<<< @/../examples/dags/06_taskflow_api/03_with_operators.py
+<<< @/../my-airflow-project/dags/06_taskflow_api/03_with_operators.py
 
 ## Web UI & Logs
 

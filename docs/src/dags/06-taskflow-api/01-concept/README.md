@@ -8,11 +8,11 @@
 
 ## Code
 
-<<< @/../examples/dags/06_taskflow_api/01_concept.py
+<<< @/../my-airflow-project/dags/06_taskflow_api/01_concept.py
 
 만약 이를 Operator 형태로 작성했다면 다음과 같습니다.
 
-<<< @/../examples/dags/06_taskflow_api/01_concept_pyoperator_version.py
+<<< @/../my-airflow-project/dags/06_taskflow_api/01_concept_pyoperator_version.py
 
 ## Web UI & Logs
 

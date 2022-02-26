@@ -6,7 +6,7 @@
 
 ![image-20220123162512663](./image-20220123162512663.png)
 
-<<< @/../examples/dags/02_dependencies_between_dags/00_to_be_triggered_by_other_dags.py
+<<< @/../my-airflow-project/dags/02_dependencies_between_dags/00_to_be_triggered_by_other_dags.py
 
 작성 후 Web UI에서 이 DAG을 ON 상태로 둡니다.
 
@@ -20,7 +20,7 @@
 
 ## Code
 
-<<< @/../examples/dags/02_dependencies_between_dags/01_trigger_dagrun.py
+<<< @/../my-airflow-project/dags/02_dependencies_between_dags/01_trigger_dagrun.py
 
 
 

@@ -20,7 +20,7 @@
 
 ## Code
 
-<<< @/../examples/dags/05_etc_features/02_variables.py
+<<< @/../my-airflow-project/dags/05_etc_features/02_variables.py
 
 ## Log
 

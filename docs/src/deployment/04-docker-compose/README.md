@@ -26,7 +26,7 @@ $ cd my-airflow-project
 
 다음처럼 `docker-compose.yml`을 작성합니다.
 
-<<< @/../examples/docker-compose.yml
+<<< @/../my-airflow-project/docker-compose.yml
 
 `docker-compose.yml` 내용을 각 컴포넌트 별로 살펴보면 다음과 같습니다.
 
@@ -34,25 +34,25 @@ $ cd my-airflow-project
 
 컨테이너간 사용할 네트워크를 구성합니다.
 
-<<< @/../examples/docker-compose.yml{2-4}
+<<< @/../my-airflow-project/docker-compose.yml{2-4}
 
 ### Meta Database
 
 Meta Database를 배포합니다. 초기화하는 부분도 포함합니다.
 
-<<< @/../examples/docker-compose.yml{5-38}
+<<< @/../my-airflow-project/docker-compose.yml{5-38}
 
 ### Scheduler
 
 Scheduler를 배포합니다.
 
-<<< @/../examples/docker-compose.yml{39-50}
+<<< @/../my-airflow-project/docker-compose.yml{39-50}
 
 ### Webserver
 
 Webserver를 배포합니다.
 
-<<< @/../examples/docker-compose.yml{51-64}
+<<< @/../my-airflow-project/docker-compose.yml{51-64}
 
 ### Code Server
 
@@ -60,7 +60,7 @@ Code Server는
 
 Code Server를 배포합니다.
 
-<<< @/../examples/docker-compose.yml{65-80}
+<<< @/../my-airflow-project/docker-compose.yml{65-80}
 
 ## 배포
 

@@ -96,11 +96,11 @@ Airflow Helm Chart를 배포하는 과정을 거칩니다. 따라서 결과적�
 
 따라서 DAG 작성 후 GCS 버킷에 업로드 해야합니다. 업로드 하는 간단한 과정을 살펴봅시다.
 
-먼저 로컬에서 다음과 같은 DAG 파일을 작성한 뒤 `00_hello_world.py` 로 저장합니다.
+먼저 로컬에서 다음과 같은 DAG 파일을 작성한 뒤 `hello_world.py` 로 저장합니다.
 
-<<< @/../examples/dags/00_hello_world.py
+<<< @/../my-airflow-project/dags/hello_world.py
 
-그 뒤 다음처럼 GCS 버킷에서 "파일 업로드" 버튼을 눌러 `00_hello_world.py`를 업로드 합니다.
+그 뒤 다음처럼 GCS 버킷에서 "파일 업로드" 버튼을 눌러 `hello_world.py`를 업로드 합니다.
 
 ![img_19.png](./img_19.png)
 

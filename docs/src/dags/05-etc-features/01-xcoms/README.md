@@ -16,7 +16,7 @@ XCom의 저장 범위는 DAG Run 내에서만 유효합니다.
 
 ## Code
 
-<<< @/../examples/dags/05_etc_features/01_xcoms.py
+<<< @/../my-airflow-project/dags/05_etc_features/01_xcoms.py
 
 :::tip
 `PythtonOperator`의 경우 반환 값이 XCom로 푸시됩니다.

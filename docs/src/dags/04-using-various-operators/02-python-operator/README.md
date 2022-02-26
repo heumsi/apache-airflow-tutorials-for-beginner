@@ -6,7 +6,7 @@
 
 ## Code
 
-<<< @/../examples/dags/04_using_various_operators/02_python_operator.py
+<<< @/../my-airflow-project/dags/04_using_various_operators/02_python_operator.py
 
 ## Web UI
 

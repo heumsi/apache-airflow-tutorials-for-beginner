@@ -10,7 +10,7 @@
 
 ## Code
 
-<<< @/../examples/dags/01_writing_various_task_flows/08_subdag.py
+<<< @/../my-airflow-project/dags/01_writing_various_task_flows/08_subdag.py
 
 
 
