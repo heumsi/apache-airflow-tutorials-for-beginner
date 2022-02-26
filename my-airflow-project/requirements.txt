@@ -1,3 +1,4 @@
+pip==22.0.3
 apache-airflow==2.2.3
 black==21.12b0
 isort==5.10.1
