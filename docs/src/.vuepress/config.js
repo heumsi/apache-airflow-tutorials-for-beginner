@@ -177,7 +177,14 @@ module.exports = {
         title: '운영',
         path: '/operation/',
         collapsable: true,
-        children: []
+        children: [
+            ['/operation/01-timezone/', 'Timezone'],
+            ['/operation/02-schedule-interval/', 'Schedule Interval'],
+            ['/operation/03-cluster-policies/', 'Cluster Policies'],
+            ['/operation/04-priority-weights/', 'Priority Weights'],
+            ['/operation/05-rbac/', 'RBAC'],
+            ['/operation/06-interfaces/', 'Interfaces'],
+        ]
       },
       {
         title: 'FAQ',
