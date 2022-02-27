@@ -166,6 +166,7 @@ module.exports = {
             collapsable: true,
             children: [
               ['/deployment/01-cloud-vendor/01-gcp/', 'GCP - Cloud Composer'],
+              ['/deployment/01-cloud-vendor/02-aws/', 'AWS - MWAA'],
             ]
           },
           ['/deployment/02-native/', '커맨드로 직접 하나씩 배포하기'],
