@@ -85,6 +85,7 @@ module.exports = {
               ['/dags/03-visualization-and-documentation-dags/01-task-groups/', 'UI에 Task들을 Group으로 표현하기'],
               ['/dags/03-visualization-and-documentation-dags/02-labels/', 'UI에 Task 간 Edge에 Label 추가하기'],
               ['/dags/03-visualization-and-documentation-dags/03-documentation/', 'UI에 DAG 문서화 추가하기'],
+              ['/dags/03-visualization-and-documentation-dags/04-save-dag-image/', 'DAG을 이미지로 저장하기'],
             ]
           },
           {
