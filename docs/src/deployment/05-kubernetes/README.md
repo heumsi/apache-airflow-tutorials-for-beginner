@@ -219,7 +219,7 @@ $ kubectl port-forward svc/airflow-webserver 8080 -n airflow
 
 ![img_1.png](./img_1.png)
 
-## 함께 더 보면 좋을 내용들
+## 함께 더 보면 좋을 내용
 
 - [`Values.yaml`에 있는 Parameter 설명](https://airflow.apache.org/docs/helm-chart/stable/parameters-ref.html)
 - [운영 배포를 위한 가이드](https://airflow.apache.org/docs/helm-chart/stable/production-guide.html)

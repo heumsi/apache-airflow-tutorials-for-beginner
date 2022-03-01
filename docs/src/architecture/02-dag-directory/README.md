@@ -3,7 +3,7 @@
 ## 개념
 
 DAG 파일을 저장하는 공간입니다. `dag_folder` 혹은 `dags_folder` 로도 불립니다.
-기본적으로 `$AIRFLOW_HOME/dags/` 가 DAG Directory가 됩니다.
+기본적으로 `$AIRFLOW_HOME/dags/` 가 DAG Directory로 설정되어 있습니다.
 
 DAG을 작성한 후 DAG Directory에 저장하면, Airflow Scheduler가 주기적으로 DAG Directory를 스캔한후 DAG을 파싱해갑니다.
 이 때 DAG 인스턴스만 파싱해가므로, 사실 DAG 그 자체가 아니라, DAG을 구성에 사용할 다른 코드들(Custom Operator나 기타 Python Code들)을 이 안에 넣어도 무방합니다.
@@ -36,9 +36,7 @@ dags_folder = ./dags
 
 `$AIRFLOW_HOME` 기준 `./dags` 경로를 DAG Directory로 설정합니다.
 
-## 그 외
-
-### `.airflowignore`
+## `.airflowignore`
 
 `.airflowignore` 는 DAG Directory 내부에 Airflow Scheduler가 스캔하지 않고 무시해야할 파일 목록을 담는 파일입니다.
 

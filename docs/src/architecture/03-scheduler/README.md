@@ -8,12 +8,12 @@ Scheduler는 DAG 파일을 파싱하고, 모든 Task와 DAG들을 모니터링�
 Scheduler는 다음과 같은 일들을 합니다.
 
 - Dag Directory에서 파일을 처리하고 결과를 얻는 일
-- DAG Run과 Task Instance의 상태를 변경하고 Executor가 실행시킬 큐에 Task를 넣는 일
+- DAG Run과 Task Instance의 상태를 변경하고 Executor가 실행시킬 큐에 Task Instance를 넣는 일
 - Executor로 스케줄링 큐에 들어온 Task를 실행시키는 일
 
 여기서 앞에 두 할 일에 대해 좀 더 알아봅시다. (Executor에 대한 내용은 별도로 설명합니다.)
 
-### Dag Directory에서 파일을 처리하는 일
+### Dag Directory에서 파일을 처리하고 결과를 얻는 일
 
 Scheduler는 Dag Directory에서 DAG 파일을 모두 읽고 이를 실행한 후, 오류 및 DAG을 Serialized해서 Database에 저장합니다.
 이를 위해 Scheduler는 `DagFileProcessorManager`라는 서브 프로세스를 만들고, `DagFileProcessorAgent` 객체를 통해 이 프로세스와 통신합니다.
@@ -23,7 +23,7 @@ Scheduler는 Dag Directory에서 DAG 파일을 모두 읽고 이를 실행한 �
 
 ![](https://airflow.apache.org/docs/apache-airflow/stable/_images/dag_file_processing_diagram.png)
 
-#### DagFileProcessorManager
+#### `DagFileProcessorManager`
 
 - Scheduler에 의해 생성되는 **프로세스**입니다.
 - 주기적으로 DAG Directory에 있는 모든 파일의 경로(`file_path`)를 변수에(`file_paths`)에 저장합니다.
@@ -47,7 +47,7 @@ Scheduler는 Dag Directory에서 DAG 파일을 모두 읽고 이를 실행한 �
     - 이 일정 시간은 `dag_file_processor_timeout` 설정 값으로 정해지며, 기본 값은 50초입니다.
   - `DagFileProcessorAgent` 객체(부모 프로세스)에게 모든 파일을 처리했는지 여부를 보냅니다.
 
-#### DagFileProcessorProcess
+#### `DagFileProcessorProcess`
 
 - `DagFileProcessorManager`에 의해 만들어지는 **프로세스**입니다.
 - `parsing_processes` 설정 값만큼 프로세스가 생성되며, 기본적으로 2개 생성됩니다.
@@ -60,8 +60,9 @@ Scheduler는 Dag Directory에서 DAG 파일을 모두 읽고 이를 실행한 �
 :::tip
 위 내용을 더 깊게 드릴다운 해보고 싶다면 직접 관련 코드를 보시기를 추천합니다.
 
-- [DagFileProcessorAgent, DagFileProcessorManager](https://github.com/apache/airflow/blob/2.2.3/airflow/dag_processing/manager.py)
-- [DagFileProcessorProcess](https://github.com/apache/airflow/blob/2.2.3/airflow/dag_processing/processor.py)
+- [DagFileProcessorAgent](https://github.com/apache/airflow/blob/2.2.3/airflow/dag_processing/manager.py#L86)
+- [DagFileProcessorManager](https://github.com/apache/airflow/blob/2.2.3/airflow/dag_processing/manager.py#L383)
+- [DagFileProcessorProcess](https://github.com/apache/airflow/blob/2.2.3/airflow/dag_processing/processor.py#L57)
 :::
 
 ### DAG Run과 Task Instance의 상태를 변경하고 Executor가 실행시킬 큐에 Task Instance를 넣는 일
@@ -158,7 +159,7 @@ DAG 파일을 파싱하고 처리하는 `DagFileProcessorProcess` 프로세스�
 Scheduler에 대한 더 많은 설정은 [공식 문서](https://airflow.apache.org/docs/apache-airflow/stable/configurations-ref.html#scheduler)에서 확인할 수 있습니다.
 :::
 
-## 함께보면 좋은 내용
+## 함께 더 보면 좋은 내용
 
 - [Diving Into Airflow Scheduler](https://blog.kk17.net/post/diving-into-airflow-scheduler/)
 - [Deep dive in to the Airflow scheduler - Airflow Summit 2021](https://www.youtube.com/watch?v=DYC4-xElccE&t=2316s)
