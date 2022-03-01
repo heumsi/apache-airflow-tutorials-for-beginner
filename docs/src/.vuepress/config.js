@@ -10,6 +10,8 @@ module.exports = {
    */
   description: "Docs for beginner who want to use Apache Airflow",
 
+  base: "/apache-airflow-tutorials-for-beginner/",
+
   /**
    * Extra tags to be injected to the page HTML `<head>`
    *
