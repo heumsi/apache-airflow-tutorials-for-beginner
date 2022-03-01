@@ -27,14 +27,12 @@ module.exports = {
    * ref：https://v1.vuepress.vuejs.org/theme/default-theme-config.html
    */
   themeConfig: {
-    repo: '',
+    repo: 'https://github.com/heumsi/apache-airflow-tutorials-for-beginner',
     editLinks: false,
     docsDir: '',
     editLinkText: '',
-    lastUpdated: false,
     smoothScroll: true,
     logo: "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F72Zk1%2FbtqPysahU2H%2Fdbpj3pZ651K59V8k561FrK%2Fimg.png",
-    nav: false,
     sidebar: [
       {
         title: '시작하기',
