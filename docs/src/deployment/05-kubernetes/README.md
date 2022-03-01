@@ -1,7 +1,7 @@
 # Kubernetes에서 Helm Chart로 배포하기
 
 이 방법에서는 Kubernetes 환경에서 Helm Chart를 이용하여 배포하는 과정에 대해서 다룹니다.
-실제로 운영하기 위한 배포할 때는 조금 더 섬세한 설정을 해줘야 하지만, 여기서는 최대한 간단히 배포하는 과정을 중심으로 알아봅시다.
+실제로 Production에서 사용하기 위해 배포할 때는 조금 더 섬세한 설정을 해줘야 하지만, 여기서는 최대한 간단히 배포하는 과정을 중심으로 알아봅시다.
 
 :::tip
 이 글은 독자가 Kubernetes와 Helm에 대한 기본 지식이 있다고 가정합니다.
@@ -134,16 +134,28 @@ logs:
     enabled: false
 ```
 
+:::warning
+`logs.persistence.enabled` 의 값을 False로 준 이유는 대부분의 Kubernetes Cluster에서 `ReadWriteMany` 형태의 PVC를 기본적으로 제공해주지 않기 때문입니다.
+Kubernetes에서는 로그는 언제든 유실되므로, Remote Logging을 통해 로그를 따로 수집하는게 일반적입니다.
+
+Remote Logging을 사용하는 부분은 이 글에서 다루지 않았습니다. (따라서 이대로 배포하면 Task Instance의 로그를 볼 수 없습니다.)
+이는 실제로 어떤 클라우드 벤더를 쓰느냐에 따라 조금씩 달라지는데, 이에 대한 내용은 추후에 다루겠습니다.
+:::
+
 :::tip
 Kubernetes에서 Airflow의 로그를 관리하는 방법은 다양합니다. 자세한 내용은 [공식 문서](https://airflow.apache.org/docs/helm-chart/stable/manage-logs.html)를 확인해보세요.
 :::
 
 :::tip
+실제로 Production에서의 사용을 위한 배포에서는 다음처럼 `postgresql.enabled` 를 false로 설정하고 클러스터 외부의 Database를 사용하기를 권장드립니다.
+
 ```yaml
 postgresql:
 #  enabled: true
   enabled: false
 ```
+
+외부 Database 연결은 다음처럼 `airflow-database` Secret에 `connection` 키의 값으로 `sql_alchemy_conn` 값을 주시면 됩니다.
 
 ```bash
 $ kubectl create secret generic airflow-database --from-literal=connection=postgresql+psycopg2://airflow:1234@airflow-database:5432/airflow
