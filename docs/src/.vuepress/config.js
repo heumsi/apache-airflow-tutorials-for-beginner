@@ -207,5 +207,8 @@ module.exports = {
   plugins: [
     '@vuepress/plugin-back-to-top',
     '@vuepress/medium-zoom',
+    '@vuepress/last-updated',
+    ["sitemap", { hostname: "https://heumsi.github.io/apache-airflow-tutorials-for-beginner/" }],
+    'vuepress-plugin-code-copy'
   ]
 }
