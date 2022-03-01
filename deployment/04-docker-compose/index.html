@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Docker Compose로 한 번에 배포하기 | Apache Airflow Tutorials for Beginner</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script async="true" src="https://www.googletagmanager.com/gtag/js?id=G-PW03QPB3R3"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-PW03QPB3R3');</script>
+    <meta name="description" content="Docs for beginner who want to use Apache Airflow">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="google-site-verification" content="wjX_mSoZBgO9SZMvjr96yOjo6n3_7pS8xNdmzDl1ESw">
+    
+    <link rel="preload" href="/apache-airflow-tutorials-for-beginner/assets/css/0.styles.9d693d51.css" as="style"><link rel="preload" href="/apache-airflow-tutorials-for-beginner/assets/js/app.2246f3fc.js" as="script"><link rel="preload" href="/apache-airflow-tutorials-for-beginner/assets/js/2.53e2d6ac.js" as="script"><link rel="preload" href="/apache-airflow-tutorials-for-beginner/assets/js/30.928fec08.js" as="script"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/10.3cda8df6.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/11.6f1e6147.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/12.aa525616.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/13.8a2c5737.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/14.df74a10f.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/15.442be228.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/16.14e7d4a6.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/17.61f3fa9a.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/18.ba42d387.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/19.f79630a3.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/20.599a35cb.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/21.f3d1f4d1.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/22.c15b7687.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/23.e9f57e2c.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/24.a63e87c6.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/25.362f5454.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/26.d3767b58.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/27.9fa81d94.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/28.d87753cb.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/29.14902b06.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/3.2b08aba8.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/31.79de5273.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/32.5b98352f.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/33.58016792.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/34.e69c2877.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/35.56579db3.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/36.1733863d.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/37.32c7807f.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/38.6048dbb1.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/39.dd254768.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/4.c2072a58.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/40.02310a71.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/41.56b39751.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/42.730a3619.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/43.5ac659d8.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/44.82ba4716.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/45.3bf59546.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/46.8bcc3329.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/47.73b37004.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/48.4481805d.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/49.2249be0b.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/5.89f6cf20.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/50.26c3de60.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/51.17a729a2.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/52.853ca45e.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/53.e02b8635.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/54.5125c9d7.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/55.c0cb199c.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/56.95b84c05.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/57.e329d6ef.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/58.eeb7e563.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/59.a9281656.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/6.efcfe243.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/60.eaa04ea8.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/61.91b477cd.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/62.cd1fe682.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/63.5b7962ee.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/64.a95331c4.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/65.aaee2fc5.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/66.c6f205ce.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/67.45848e16.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/68.e69a5f62.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/69.83b28b6b.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/7.aa8a538f.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/70.c54d1b5f.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/71.9da96f18.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/72.d6acd69f.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/73.7fc2da93.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/74.60512802.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/75.e1e55e11.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/76.7667fc8a.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/77.fe549113.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/78.b4af55d1.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/79.8e25efc7.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/8.977c79c8.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/80.a39ae488.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/81.3aa81573.js"><link rel="prefetch" href="/apache-airflow-tutorials-for-beginner/assets/js/9.15d8f944.js">
+    <link rel="stylesheet" href="/apache-airflow-tutorials-for-beginner/assets/css/0.styles.9d693d51.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/apache-airflow-tutorials-for-beginner/" class="home-link router-link-active"><img src="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F72Zk1%2FbtqPysahU2H%2Fdbpj3pZ651K59V8k561FrK%2Fimg.png" alt="Apache Airflow Tutorials for Beginner" class="logo"> <span class="site-name can-hide">Apache Airflow Tutorials for Beginner</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"> <a href="https://github.com/heumsi/apache-airflow-tutorials-for-beginner" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"> <a href="https://github.com/heumsi/apache-airflow-tutorials-for-beginner" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><a href="/apache-airflow-tutorials-for-beginner/getting-started/" class="sidebar-heading clickable"><span>시작하기</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/apache-airflow-tutorials-for-beginner/dags/" class="sidebar-heading clickable"><span>DAG</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/apache-airflow-tutorials-for-beginner/architecture/" class="sidebar-heading clickable"><span>아키텍처</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/apache-airflow-tutorials-for-beginner/deployment/" class="sidebar-heading clickable router-link-active open"><span>배포</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><a href="/apache-airflow-tutorials-for-beginner/deployment/01-cloud-vendor/" class="sidebar-heading clickable open"><span>Cloud Managed 서비스 이용하기</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/apache-airflow-tutorials-for-beginner/deployment/01-cloud-vendor/01-gcp/" class="sidebar-link">GCP - Cloud Composer</a></li><li><a href="/apache-airflow-tutorials-for-beginner/deployment/01-cloud-vendor/02-aws/" class="sidebar-link">AWS - MWAA</a></li></ul></section></li><li><a href="/apache-airflow-tutorials-for-beginner/deployment/02-native/" class="sidebar-link">커맨드로 직접 하나씩 배포하기</a></li><li><a href="/apache-airflow-tutorials-for-beginner/deployment/03-docker/" class="sidebar-link">Docker로 하나씩 배포하기</a></li><li><a href="/apache-airflow-tutorials-for-beginner/deployment/04-docker-compose/" aria-current="page" class="active sidebar-link">Docker Compose로 한 번에 배포하기</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/apache-airflow-tutorials-for-beginner/deployment/04-docker-compose/#프로젝트-세팅" class="sidebar-link">프로젝트 세팅</a></li><li class="sidebar-sub-header"><a href="/apache-airflow-tutorials-for-beginner/deployment/04-docker-compose/#docker-compose-yml-작성" class="sidebar-link">docker-compose.yml 작성</a></li><li class="sidebar-sub-header"><a href="/apache-airflow-tutorials-for-beginner/deployment/04-docker-compose/#배포" class="sidebar-link">배포</a></li><li class="sidebar-sub-header"><a href="/apache-airflow-tutorials-for-beginner/deployment/04-docker-compose/#code-server-2" class="sidebar-link">Code Server</a></li></ul></li><li><a href="/apache-airflow-tutorials-for-beginner/deployment/05-kubernetes/" class="sidebar-link">Kubernetes에서 Helm Chart로 배포하기</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/apache-airflow-tutorials-for-beginner/operation/" class="sidebar-heading clickable"><span>운영</span> <span class="arrow right"></span></a> <!----></section></li><li><a href="/apache-airflow-tutorials-for-beginner/faq/" class="sidebar-link">FAQ</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="docker-compose로-한-번에-배포하기"><a href="#docker-compose로-한-번에-배포하기" class="header-anchor">#</a> Docker Compose로 한 번에 배포하기</h1> <p>이 방법은 Docker Compose로 Airflow 컴포넌트들을 한 번에 배포하는 방법입니다.
+Docker로 컨테이너를 하나씩 배포하는 것보다 훨씬 편리합니다.
+최종적으로 Docker 컨테이너를 통해 각 Airflow 컴포넌트들의 독립된 실행 환경을 구성하게 됩니다.</p> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>Docker Compose에 대해 처음 들어보시는 분이라면 <a href="https://engineer-mole.tistory.com/221" target="_blank" rel="noopener noreferrer">[Docker] docker compose 사용법<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>를 읽어보시길 추천드립니다.</p></div> <h2 id="프로젝트-세팅"><a href="#프로젝트-세팅" class="header-anchor">#</a> 프로젝트 세팅</h2> <h3 id="프로젝트-경로-생성-및-진입"><a href="#프로젝트-경로-생성-및-진입" class="header-anchor">#</a> 프로젝트 경로 생성 및 진입</h3> <p>Airflow 프로젝트를 담을 경로를 다음처럼 생성하고 진입합니다.</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># Airflow 프로젝트를 위한 디렉토리를 하나 생성합니다.</span>
+$ <span class="token function">mkdir</span> my-airflow-project
+$ <span class="token builtin class-name">cd</span> my-airflow-project
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>이후에 진행될 모든 커맨드는 이 프로젝트 경로에서 실행합니다.</p> <h2 id="docker-compose-yml-작성"><a href="#docker-compose-yml-작성" class="header-anchor">#</a> <code>docker-compose.yml</code> 작성</h2> <p>다음처럼 <code>docker-compose.yml</code>을 작성합니다.</p> <div class="language-yml line-numbers-mode"><pre class="language-yml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3'</span>
+<span class="token key atrule">networks</span><span class="token punctuation">:</span>
+  <span class="token key atrule">airflow</span><span class="token punctuation">:</span>
+    <span class="token key atrule">driver</span><span class="token punctuation">:</span> bridge
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">airflow-database</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>database
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> postgres<span class="token punctuation">:</span><span class="token number">13</span>
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> POSTGRES_USER=airflow
+      <span class="token punctuation">-</span> POSTGRES_PASSWORD=1234
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./data<span class="token punctuation">:</span>/var/lib/postgresql/data
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+  <span class="token key atrule">airflow-init</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>init
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow<span class="token punctuation">-</span>database
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> apache/airflow<span class="token punctuation">:</span>2.2.3<span class="token punctuation">-</span>python3.8
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2<span class="token punctuation">:</span>//airflow<span class="token punctuation">:</span>1234@airflow<span class="token punctuation">-</span>database<span class="token punctuation">:</span>5432/airflow
+    <span class="token key atrule">entrypoint</span><span class="token punctuation">:</span> /bin/bash
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token punctuation">-</span>
+      <span class="token punctuation">-</span>c &quot; \
+        airflow db init <span class="token important">&amp;&amp;</span> \
+        airflow users create \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>username admin \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>password 1234 \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>firstname heumsi \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>lastname jeon \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>role Admin \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>email heumsi@naver.com \
+        &quot;
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> on<span class="token punctuation">-</span>failure
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+  <span class="token key atrule">airflow-scheduler</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>scheduler
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow<span class="token punctuation">-</span>init
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> apache/airflow<span class="token punctuation">:</span>2.2.3<span class="token punctuation">-</span>python3.8
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2<span class="token punctuation">:</span>//airflow<span class="token punctuation">:</span>1234@airflow<span class="token punctuation">-</span>database<span class="token punctuation">:</span>5432/airflow
+      <span class="token punctuation">-</span> AIRFLOW__CORE__EXECUTOR=LocalExecutor
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> airflow scheduler
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+  <span class="token key atrule">airflow-webserver</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>webserver
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow<span class="token punctuation">-</span>init
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> apache/airflow<span class="token punctuation">:</span>2.2.3<span class="token punctuation">-</span>python3.8
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2<span class="token punctuation">:</span>//airflow<span class="token punctuation">:</span>1234@airflow<span class="token punctuation">-</span>database<span class="token punctuation">:</span>5432/airflow
+      <span class="token punctuation">-</span> AIRFLOW__CORE__EXECUTOR=LocalExecutor
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> airflow webserver
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 8080<span class="token punctuation">:</span><span class="token number">8080</span>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+  <span class="token key atrule">airflow-code-server</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>code<span class="token punctuation">-</span>server
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow<span class="token punctuation">-</span>init
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> codercom/code<span class="token punctuation">-</span>server<span class="token punctuation">:</span>4.0.2
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> PASSWORD=1234
+      <span class="token punctuation">-</span> HOST=0.0.0.0
+      <span class="token punctuation">-</span> PORT=8888
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./dags<span class="token punctuation">:</span>/home/coder/project
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 8888<span class="token punctuation">:</span><span class="token number">8888</span>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br></div></div><p><code>docker-compose.yml</code> 내용을 각 컴포넌트 별로 살펴보면 다음과 같습니다.</p> <h3 id="docker-network"><a href="#docker-network" class="header-anchor">#</a> Docker Network</h3> <p>컨테이너간 사용할 네트워크를 구성합니다.</p> <div class="language-yml line-numbers-mode"><div class="highlight-lines"><br><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div><pre class="language-yml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3'</span>
+<span class="token key atrule">networks</span><span class="token punctuation">:</span>
+  <span class="token key atrule">airflow</span><span class="token punctuation">:</span>
+    <span class="token key atrule">driver</span><span class="token punctuation">:</span> bridge
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">airflow-database</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>database
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> postgres<span class="token punctuation">:</span><span class="token number">13</span>
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> POSTGRES_USER=airflow
+      <span class="token punctuation">-</span> POSTGRES_PASSWORD=1234
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./data<span class="token punctuation">:</span>/var/lib/postgresql/data
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+  <span class="token key atrule">airflow-init</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>init
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow<span class="token punctuation">-</span>database
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> apache/airflow<span class="token punctuation">:</span>2.2.3<span class="token punctuation">-</span>python3.8
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2<span class="token punctuation">:</span>//airflow<span class="token punctuation">:</span>1234@airflow<span class="token punctuation">-</span>database<span class="token punctuation">:</span>5432/airflow
+    <span class="token key atrule">entrypoint</span><span class="token punctuation">:</span> /bin/bash
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token punctuation">-</span>
+      <span class="token punctuation">-</span>c &quot; \
+        airflow db init <span class="token important">&amp;&amp;</span> \
+        airflow users create \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>username admin \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>password 1234 \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>firstname heumsi \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>lastname jeon \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>role Admin \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>email heumsi@naver.com \
+        &quot;
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> on<span class="token punctuation">-</span>failure
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+  <span class="token key atrule">airflow-scheduler</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>scheduler
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow<span class="token punctuation">-</span>init
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> apache/airflow<span class="token punctuation">:</span>2.2.3<span class="token punctuation">-</span>python3.8
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2<span class="token punctuation">:</span>//airflow<span class="token punctuation">:</span>1234@airflow<span class="token punctuation">-</span>database<span class="token punctuation">:</span>5432/airflow
+      <span class="token punctuation">-</span> AIRFLOW__CORE__EXECUTOR=LocalExecutor
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> airflow scheduler
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+  <span class="token key atrule">airflow-webserver</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>webserver
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow<span class="token punctuation">-</span>init
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> apache/airflow<span class="token punctuation">:</span>2.2.3<span class="token punctuation">-</span>python3.8
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2<span class="token punctuation">:</span>//airflow<span class="token punctuation">:</span>1234@airflow<span class="token punctuation">-</span>database<span class="token punctuation">:</span>5432/airflow
+      <span class="token punctuation">-</span> AIRFLOW__CORE__EXECUTOR=LocalExecutor
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> airflow webserver
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 8080<span class="token punctuation">:</span><span class="token number">8080</span>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+  <span class="token key atrule">airflow-code-server</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>code<span class="token punctuation">-</span>server
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow<span class="token punctuation">-</span>init
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> codercom/code<span class="token punctuation">-</span>server<span class="token punctuation">:</span>4.0.2
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> PASSWORD=1234
+      <span class="token punctuation">-</span> HOST=0.0.0.0
+      <span class="token punctuation">-</span> PORT=8888
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./dags<span class="token punctuation">:</span>/home/coder/project
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 8888<span class="token punctuation">:</span><span class="token number">8888</span>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br></div></div><h3 id="meta-database"><a href="#meta-database" class="header-anchor">#</a> Meta Database</h3> <p>Meta Database를 배포합니다. 초기화하는 부분도 포함합니다.</p> <div class="language-yml line-numbers-mode"><div class="highlight-lines"><br><br><br><br><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div><pre class="language-yml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3'</span>
+<span class="token key atrule">networks</span><span class="token punctuation">:</span>
+  <span class="token key atrule">airflow</span><span class="token punctuation">:</span>
+    <span class="token key atrule">driver</span><span class="token punctuation">:</span> bridge
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">airflow-database</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>database
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> postgres<span class="token punctuation">:</span><span class="token number">13</span>
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> POSTGRES_USER=airflow
+      <span class="token punctuation">-</span> POSTGRES_PASSWORD=1234
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./data<span class="token punctuation">:</span>/var/lib/postgresql/data
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+  <span class="token key atrule">airflow-init</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>init
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow<span class="token punctuation">-</span>database
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> apache/airflow<span class="token punctuation">:</span>2.2.3<span class="token punctuation">-</span>python3.8
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2<span class="token punctuation">:</span>//airflow<span class="token punctuation">:</span>1234@airflow<span class="token punctuation">-</span>database<span class="token punctuation">:</span>5432/airflow
+    <span class="token key atrule">entrypoint</span><span class="token punctuation">:</span> /bin/bash
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token punctuation">-</span>
+      <span class="token punctuation">-</span>c &quot; \
+        airflow db init <span class="token important">&amp;&amp;</span> \
+        airflow users create \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>username admin \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>password 1234 \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>firstname heumsi \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>lastname jeon \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>role Admin \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>email heumsi@naver.com \
+        &quot;
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> on<span class="token punctuation">-</span>failure
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+  <span class="token key atrule">airflow-scheduler</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>scheduler
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow<span class="token punctuation">-</span>init
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> apache/airflow<span class="token punctuation">:</span>2.2.3<span class="token punctuation">-</span>python3.8
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2<span class="token punctuation">:</span>//airflow<span class="token punctuation">:</span>1234@airflow<span class="token punctuation">-</span>database<span class="token punctuation">:</span>5432/airflow
+      <span class="token punctuation">-</span> AIRFLOW__CORE__EXECUTOR=LocalExecutor
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> airflow scheduler
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+  <span class="token key atrule">airflow-webserver</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>webserver
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow<span class="token punctuation">-</span>init
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> apache/airflow<span class="token punctuation">:</span>2.2.3<span class="token punctuation">-</span>python3.8
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2<span class="token punctuation">:</span>//airflow<span class="token punctuation">:</span>1234@airflow<span class="token punctuation">-</span>database<span class="token punctuation">:</span>5432/airflow
+      <span class="token punctuation">-</span> AIRFLOW__CORE__EXECUTOR=LocalExecutor
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> airflow webserver
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 8080<span class="token punctuation">:</span><span class="token number">8080</span>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+  <span class="token key atrule">airflow-code-server</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>code<span class="token punctuation">-</span>server
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow<span class="token punctuation">-</span>init
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> codercom/code<span class="token punctuation">-</span>server<span class="token punctuation">:</span>4.0.2
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> PASSWORD=1234
+      <span class="token punctuation">-</span> HOST=0.0.0.0
+      <span class="token punctuation">-</span> PORT=8888
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./dags<span class="token punctuation">:</span>/home/coder/project
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 8888<span class="token punctuation">:</span><span class="token number">8888</span>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br></div></div><h3 id="scheduler"><a href="#scheduler" class="header-anchor">#</a> Scheduler</h3> <p>Scheduler를 배포합니다.</p> <div class="language-yml line-numbers-mode"><div class="highlight-lines"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div><pre class="language-yml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3'</span>
+<span class="token key atrule">networks</span><span class="token punctuation">:</span>
+  <span class="token key atrule">airflow</span><span class="token punctuation">:</span>
+    <span class="token key atrule">driver</span><span class="token punctuation">:</span> bridge
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">airflow-database</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>database
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> postgres<span class="token punctuation">:</span><span class="token number">13</span>
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> POSTGRES_USER=airflow
+      <span class="token punctuation">-</span> POSTGRES_PASSWORD=1234
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./data<span class="token punctuation">:</span>/var/lib/postgresql/data
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+  <span class="token key atrule">airflow-init</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>init
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow<span class="token punctuation">-</span>database
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> apache/airflow<span class="token punctuation">:</span>2.2.3<span class="token punctuation">-</span>python3.8
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2<span class="token punctuation">:</span>//airflow<span class="token punctuation">:</span>1234@airflow<span class="token punctuation">-</span>database<span class="token punctuation">:</span>5432/airflow
+    <span class="token key atrule">entrypoint</span><span class="token punctuation">:</span> /bin/bash
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token punctuation">-</span>
+      <span class="token punctuation">-</span>c &quot; \
+        airflow db init <span class="token important">&amp;&amp;</span> \
+        airflow users create \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>username admin \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>password 1234 \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>firstname heumsi \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>lastname jeon \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>role Admin \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>email heumsi@naver.com \
+        &quot;
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> on<span class="token punctuation">-</span>failure
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+  <span class="token key atrule">airflow-scheduler</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>scheduler
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow<span class="token punctuation">-</span>init
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> apache/airflow<span class="token punctuation">:</span>2.2.3<span class="token punctuation">-</span>python3.8
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2<span class="token punctuation">:</span>//airflow<span class="token punctuation">:</span>1234@airflow<span class="token punctuation">-</span>database<span class="token punctuation">:</span>5432/airflow
+      <span class="token punctuation">-</span> AIRFLOW__CORE__EXECUTOR=LocalExecutor
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> airflow scheduler
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+  <span class="token key atrule">airflow-webserver</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>webserver
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow<span class="token punctuation">-</span>init
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> apache/airflow<span class="token punctuation">:</span>2.2.3<span class="token punctuation">-</span>python3.8
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2<span class="token punctuation">:</span>//airflow<span class="token punctuation">:</span>1234@airflow<span class="token punctuation">-</span>database<span class="token punctuation">:</span>5432/airflow
+      <span class="token punctuation">-</span> AIRFLOW__CORE__EXECUTOR=LocalExecutor
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> airflow webserver
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 8080<span class="token punctuation">:</span><span class="token number">8080</span>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+  <span class="token key atrule">airflow-code-server</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>code<span class="token punctuation">-</span>server
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow<span class="token punctuation">-</span>init
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> codercom/code<span class="token punctuation">-</span>server<span class="token punctuation">:</span>4.0.2
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> PASSWORD=1234
+      <span class="token punctuation">-</span> HOST=0.0.0.0
+      <span class="token punctuation">-</span> PORT=8888
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./dags<span class="token punctuation">:</span>/home/coder/project
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 8888<span class="token punctuation">:</span><span class="token number">8888</span>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br></div></div><h3 id="webserver"><a href="#webserver" class="header-anchor">#</a> Webserver</h3> <p>Webserver를 배포합니다.</p> <div class="language-yml line-numbers-mode"><div class="highlight-lines"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div><pre class="language-yml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3'</span>
+<span class="token key atrule">networks</span><span class="token punctuation">:</span>
+  <span class="token key atrule">airflow</span><span class="token punctuation">:</span>
+    <span class="token key atrule">driver</span><span class="token punctuation">:</span> bridge
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">airflow-database</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>database
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> postgres<span class="token punctuation">:</span><span class="token number">13</span>
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> POSTGRES_USER=airflow
+      <span class="token punctuation">-</span> POSTGRES_PASSWORD=1234
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./data<span class="token punctuation">:</span>/var/lib/postgresql/data
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+  <span class="token key atrule">airflow-init</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>init
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow<span class="token punctuation">-</span>database
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> apache/airflow<span class="token punctuation">:</span>2.2.3<span class="token punctuation">-</span>python3.8
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2<span class="token punctuation">:</span>//airflow<span class="token punctuation">:</span>1234@airflow<span class="token punctuation">-</span>database<span class="token punctuation">:</span>5432/airflow
+    <span class="token key atrule">entrypoint</span><span class="token punctuation">:</span> /bin/bash
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token punctuation">-</span>
+      <span class="token punctuation">-</span>c &quot; \
+        airflow db init <span class="token important">&amp;&amp;</span> \
+        airflow users create \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>username admin \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>password 1234 \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>firstname heumsi \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>lastname jeon \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>role Admin \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>email heumsi@naver.com \
+        &quot;
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> on<span class="token punctuation">-</span>failure
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+  <span class="token key atrule">airflow-scheduler</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>scheduler
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow<span class="token punctuation">-</span>init
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> apache/airflow<span class="token punctuation">:</span>2.2.3<span class="token punctuation">-</span>python3.8
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2<span class="token punctuation">:</span>//airflow<span class="token punctuation">:</span>1234@airflow<span class="token punctuation">-</span>database<span class="token punctuation">:</span>5432/airflow
+      <span class="token punctuation">-</span> AIRFLOW__CORE__EXECUTOR=LocalExecutor
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> airflow scheduler
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+  <span class="token key atrule">airflow-webserver</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>webserver
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow<span class="token punctuation">-</span>init
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> apache/airflow<span class="token punctuation">:</span>2.2.3<span class="token punctuation">-</span>python3.8
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2<span class="token punctuation">:</span>//airflow<span class="token punctuation">:</span>1234@airflow<span class="token punctuation">-</span>database<span class="token punctuation">:</span>5432/airflow
+      <span class="token punctuation">-</span> AIRFLOW__CORE__EXECUTOR=LocalExecutor
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> airflow webserver
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 8080<span class="token punctuation">:</span><span class="token number">8080</span>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+  <span class="token key atrule">airflow-code-server</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>code<span class="token punctuation">-</span>server
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow<span class="token punctuation">-</span>init
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> codercom/code<span class="token punctuation">-</span>server<span class="token punctuation">:</span>4.0.2
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> PASSWORD=1234
+      <span class="token punctuation">-</span> HOST=0.0.0.0
+      <span class="token punctuation">-</span> PORT=8888
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./dags<span class="token punctuation">:</span>/home/coder/project
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 8888<span class="token punctuation">:</span><span class="token number">8888</span>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br></div></div><h3 id="code-server"><a href="#code-server" class="header-anchor">#</a> Code Server</h3> <p>Code Server는</p> <p>Code Server를 배포합니다.</p> <div class="language-yml line-numbers-mode"><div class="highlight-lines"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><div class="highlighted"> </div><br></div><pre class="language-yml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3'</span>
+<span class="token key atrule">networks</span><span class="token punctuation">:</span>
+  <span class="token key atrule">airflow</span><span class="token punctuation">:</span>
+    <span class="token key atrule">driver</span><span class="token punctuation">:</span> bridge
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">airflow-database</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>database
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> postgres<span class="token punctuation">:</span><span class="token number">13</span>
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> POSTGRES_USER=airflow
+      <span class="token punctuation">-</span> POSTGRES_PASSWORD=1234
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./data<span class="token punctuation">:</span>/var/lib/postgresql/data
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+  <span class="token key atrule">airflow-init</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>init
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow<span class="token punctuation">-</span>database
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> apache/airflow<span class="token punctuation">:</span>2.2.3<span class="token punctuation">-</span>python3.8
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2<span class="token punctuation">:</span>//airflow<span class="token punctuation">:</span>1234@airflow<span class="token punctuation">-</span>database<span class="token punctuation">:</span>5432/airflow
+    <span class="token key atrule">entrypoint</span><span class="token punctuation">:</span> /bin/bash
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token punctuation">-</span>
+      <span class="token punctuation">-</span>c &quot; \
+        airflow db init <span class="token important">&amp;&amp;</span> \
+        airflow users create \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>username admin \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>password 1234 \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>firstname heumsi \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>lastname jeon \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>role Admin \
+          <span class="token punctuation">-</span><span class="token punctuation">-</span>email heumsi@naver.com \
+        &quot;
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> on<span class="token punctuation">-</span>failure
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+  <span class="token key atrule">airflow-scheduler</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>scheduler
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow<span class="token punctuation">-</span>init
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> apache/airflow<span class="token punctuation">:</span>2.2.3<span class="token punctuation">-</span>python3.8
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2<span class="token punctuation">:</span>//airflow<span class="token punctuation">:</span>1234@airflow<span class="token punctuation">-</span>database<span class="token punctuation">:</span>5432/airflow
+      <span class="token punctuation">-</span> AIRFLOW__CORE__EXECUTOR=LocalExecutor
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> airflow scheduler
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+  <span class="token key atrule">airflow-webserver</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>webserver
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow<span class="token punctuation">-</span>init
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> apache/airflow<span class="token punctuation">:</span>2.2.3<span class="token punctuation">-</span>python3.8
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2<span class="token punctuation">:</span>//airflow<span class="token punctuation">:</span>1234@airflow<span class="token punctuation">-</span>database<span class="token punctuation">:</span>5432/airflow
+      <span class="token punctuation">-</span> AIRFLOW__CORE__EXECUTOR=LocalExecutor
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> airflow webserver
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 8080<span class="token punctuation">:</span><span class="token number">8080</span>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+  <span class="token key atrule">airflow-code-server</span><span class="token punctuation">:</span>
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> airflow<span class="token punctuation">-</span>code<span class="token punctuation">-</span>server
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow<span class="token punctuation">-</span>init
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> codercom/code<span class="token punctuation">-</span>server<span class="token punctuation">:</span>4.0.2
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> PASSWORD=1234
+      <span class="token punctuation">-</span> HOST=0.0.0.0
+      <span class="token punctuation">-</span> PORT=8888
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./dags<span class="token punctuation">:</span>/home/coder/project
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 8888<span class="token punctuation">:</span><span class="token number">8888</span>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> airflow
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br></div></div><h2 id="배포"><a href="#배포" class="header-anchor">#</a> 배포</h2> <p>다음 명령어로 <code>docker-compose.yml</code> 를 실행합니다.</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>$ <span class="token function">docker-compose</span> up
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>컨테이너가 제대로 배포되었는지 다음처럼 확인할 수 있습니다.</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>$ <span class="token function">docker-compose</span> <span class="token function">ps</span>
+
+      Name                     Command               State            Ports
+------------------------------------------------------------------------------------
+airflow-code-server   /usr/bin/entrypoint.sh --b <span class="token punctuation">..</span>. Up       <span class="token number">8080</span>/tcp, <span class="token number">0.0</span>.0.0:8888-<span class="token operator">&gt;</span><span class="token number">8888</span>/tcp
+airflow-database    docker-entrypoint.sh postgres    Up       <span class="token number">5432</span>/tcp
+airflow-init        /bin/bash -c  <span class="token punctuation">\</span>                  Exit <span class="token number">0</span>
+                      airflow  <span class="token punctuation">..</span>.
+airflow-scheduler   /usr/bin/dumb-init -- /ent <span class="token punctuation">..</span>.   Up       <span class="token number">8080</span>/tcp
+airflow-webserver   /usr/bin/dumb-init -- /ent <span class="token punctuation">..</span>.   Up       <span class="token number">0.0</span>.0.0:8080-<span class="token operator">&gt;</span><span class="token number">8080</span>/tcp
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h2 id="code-server-2"><a href="#code-server-2" class="header-anchor">#</a> Code Server</h2> <p>브라우저에서 <code>http://localhost:8888</code> 에 접속해봅시다.</p> <p><img src="/apache-airflow-tutorials-for-beginner/assets/img/img.179401d5.png" alt="img.png"></p> <p>배포할 때 설정한 비밀번호 <code>1234</code> 를 입력합니다. 그러면 아래와 같은 화면이 등장합니다.</p> <p><img src="/apache-airflow-tutorials-for-beginner/assets/img/img_2.c6e29dc6.png" alt="img_2.png"></p> <p>왼쪽 Explorer 탭에서 <code>project</code> 를 클릭하면, 우리가 마운트한 <code>dags/</code> 내 파일이 보입니다.</p> <p><img src="/apache-airflow-tutorials-for-beginner/assets/img/img_1.123084dc.png" alt="img_1.png"></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">3/1/2022, 1:26:42 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/apache-airflow-tutorials-for-beginner/deployment/03-docker/" class="prev">
+        Docker로 하나씩 배포하기
+      </a></span> <span class="next"><a href="/apache-airflow-tutorials-for-beginner/deployment/05-kubernetes/">
+        Kubernetes에서 Helm Chart로 배포하기
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/apache-airflow-tutorials-for-beginner/assets/js/app.2246f3fc.js" defer></script><script src="/apache-airflow-tutorials-for-beginner/assets/js/2.53e2d6ac.js" defer></script><script src="/apache-airflow-tutorials-for-beginner/assets/js/30.928fec08.js" defer></script>
+  </body>
+</html>
