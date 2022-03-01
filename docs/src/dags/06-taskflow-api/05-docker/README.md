@@ -1,5 +1,8 @@
 # Docker 사용하기
 
+Taskflow API에서 Task Instance를 Docker Container로 실행할 수 있습니다.
+이는 가상 환경보다 더 높은 격리 수준으로, 환경적으로 더 높은 자유도를 가질 수 있습니다.
+
 ## 사전 준비
 
 ### Airflow Docker Provider 설치
@@ -21,15 +24,24 @@ Docker version 20.10.5, build 55c4c88
 
 ## Graph View
 
+다음과 같이 간단한 Task를 하나 실행하는 DAG을 작성할 것입니다.
+
 ![img.png](./img.png)
 
 ## Code
 
-<<< @/../my-airflow-project/dags/06_taskflow_api/05_docker.py
+<<< @/../my-airflow-project/dags/06_taskflow_api/05_docker.py{3,19-23}
+
+- `@task.docker` 로 해당 Task Instance를 docker container로 실행합니다.
+  - `image` 파라미터에 실행 기반이 되는 image를 넘깁니다.
 
 ## Web UI & Logs
 
+DAG을 실행하면 다음과 같은 화면을 얻습니다.
+
 ![img_1.png](./img_1.png)
+
+Task Instance의 로그를 살펴보면 다음과 같습니다.
 
 ### `print_python_version`
 
@@ -79,8 +91,3 @@ Docker version 20.10.5, build 55c4c88
 [2022-01-31, 16:22:06 UTC] {docker.py:325} INFO - Current version of Python is  3.9.10 (main, Jan 29 2022, 04:38:19)
 [GCC 8.3.0]
 ```
-
-## Keywords
-
-- Taskflow API
-- Docker

@@ -1,16 +1,28 @@
 # Virtualenv 사용하기
 
+가상환경 생성과 패키지 설치를 Taskflow API에서도 사용할 수 있습니다.
+결과적으로는 `PythonVirtualenvOperator` 를 사용하는 것과 동일합니다.
+
 ## Graph View
+
+다음과 같이 간단한 Task를 하나 실행하는 DAG을 작성할 것입니다.
 
 ![img.png](./img.png)
 
 ## Code
 
-<<< @/../my-airflow-project/dags/06_taskflow_api/04_virtualenv.py
+<<< @/../my-airflow-project/dags/06_taskflow_api/04_virtualenv.py{3,19-28}
+
+- `@task.virtualenv` 로 가상 환경과 패키지에 대한 설정을 추가할 수 있습니다.
+  - `requirements` 파라미터로 설치할 패키지 목록을 `List[str]` 형태로 넘깁니다.
 
 ## Web UI & Logs
 
+DAG을 실행하면 다음과 같은 화면을 얻습니다.
+
 ![img_1.png](./img_1.png)
+
+Task Instance의 로그를 살펴보면 다음과 같습니다.
 
 ### `print_emoji`
 
@@ -35,8 +47,3 @@
 [2022-01-31, 16:10:11 UTC] {process_utils.py:164} INFO - Output:
 [2022-01-31, 16:10:14 UTC] {process_utils.py:168} INFO - Python is 👍
 ```
-
-## Keywords
-
-- Taskflow API
-- Virtualenv

@@ -1,22 +1,55 @@
 # 개념
 
-`PythonOperator` 및 를 더 쉽게 사용하기 위한 추상화된 API
+Airflow를 통해 DAG을 작성하다보면, 일반적으로 `PythonOperator` 를 많이 사용하게 됩니다.
+Taskflow API는 이런 `PythonOperator` 을 좀 더 쉽게 사용하기 위해 2.x 버전부터 등장한 개념입니다.
+
+Taskflow API를 사용하면 DAG을 작성하는 방식이 기존과 조금 달라지게 됩니다.
 
 ## Graph View
+
+다음과 같은 Task 의존성을 가지는 DAG을 Taskflow API로 작성해보겠습니다.
 
 ![img.png](./img.png)
 
 ## Code
 
+전체 코드는 다음과 같습니다.
+
 <<< @/../my-airflow-project/dags/06_taskflow_api/01_concept.py
 
-만약 이를 Operator 형태로 작성했다면 다음과 같습니다.
+주요한 부분을 하나씩 살펴보겠습니다.
+
+<<< @/../my-airflow-project/dags/06_taskflow_api/01_concept.py{3,7-17}
+
+- `@dag` 데코레이터를 메인이 되는 함수 위에 두어 `DAG` 인스턴스를 정의합니다.
+  - `@dag` 데코레이터 내 파라미터는 일반적인 `DAG` 생성 파라미터와 동일합니다.
+
+
+<<< @/../my-airflow-project/dags/06_taskflow_api/01_concept.py{3,25-48}
+
+- `@task` 데코레이터를 함수 위에 두어 Task 인스턴스를 정의합니다.
+  - 기존과 달리 `PythonOperator`로 정의하지 않고 함수를 정의한 뒤 데코레이터를 붙이는 방식입니다.
+
+<<< @/../my-airflow-project/dags/06_taskflow_api/01_concept.py{50-53}
+
+- `@task` 데코레이터를 붙인 함수(Task Instance)들을 호출합니다.
+- 함수 간 의존 관계가 있다면 Scheduler가 파싱할 때 자동으로 의존 관계가 설정됩니다.
+  - 즉 `>>` 와 같이 명시적으로 Task Instance간 의존성 정의를 하지 않아도 됩니다.
+
+Taskflow API 형태가 아닌 Operator 형태로 작성했다면 다음과 같습니다.
 
 <<< @/../my-airflow-project/dags/06_taskflow_api/01_concept_pyoperator_version.py
 
+- Taskflow API에 비해 코드량이 조금 더 늘어납니다.
+- 또한 XCom을 직접 사용해야해서 조금 복잡할 수 있습니다.
+
 ## Web UI & Logs
 
+DAG을 실행하면 다음과 같은 화면을 얻습니다.
+
 ![img_1.png](./img_1.png)
+
+각 Task Instance의 로그를 살펴보면 다음과 같습니다.
 
 ### `print_hello`
 
@@ -89,7 +122,3 @@
     'templates_dict': None
 }
 ```
-
-## Keywords
-
-- Taskflow API
