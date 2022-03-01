@@ -17,7 +17,7 @@
     "@vuepress/plugin-google-analytics": "^1.9.7",
     "@vuepress/plugin-last-updated": "^1.9.7",
     "@vuepress/plugin-medium-zoom": "^1.9.7",
-    "vuepress": "^1.5.3",
+    "vuepress": "^1.9.2",
     "vuepress-plugin-code-copy": "^1.0.6",
     "vuepress-plugin-sitemap": "^2.3.1"
   }
