@@ -8,7 +8,7 @@ module.exports = {
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#description
    */
-  description: "Docs for beginner who want to use Apache Airflow",
+  description: "Docs for beginners who want to use Apache Airflow",
 
   base: "/apache-airflow-tutorials-for-beginner/",
 
@@ -22,6 +22,14 @@ module.exports = {
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
     ['meta', { name: 'google-site-verification', content: 'wjX_mSoZBgO9SZMvjr96yOjo6n3_7pS8xNdmzDl1ESw' }],
+    ['meta', { property: 'og:title', content: title }],
+    ['meta', { property: 'twitter:title', content: title }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:url', content: 'https://heumsi.github.io/apache-airflow-tutorials-for-beginner/' }],
+    ['meta', { property: 'og:site_name', content: title}],
+    ['meta', { property: 'og:description', content: description }],
+    ['meta', { property: 'og:image', content: 'https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F72Zk1%2FbtqPysahU2H%2Fdbpj3pZ651K59V8k561FrK%2Fimg.png' }],
+    ['meta', { property: 'og:article:author', content: 'heumsi' }],
     [
       "script",
       {
