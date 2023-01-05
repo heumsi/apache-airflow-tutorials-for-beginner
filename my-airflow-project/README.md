@@ -13,6 +13,9 @@ Python 3.8.12
 $ python -m venv .venv
 $ source .venv/bin/activate
 
+# Mac OS라면 psycopg2==2.9.3 패키지를 위해 다음 의존성을 설치해야 합니다.
+$ brew install postgresql
+
 # 의존성 패키지를 설치합니다.
 $ pip install -r requirements.txt
 ```
@@ -25,9 +28,9 @@ Docker가 실행된 환경이어야 합니다.
 # 다음 커맨드를 순서대로 입력합니다.
 
 # Meta Database를 실행합니다. (Docker Container)
-$ make scheduler
+$ make run-db
 
-# Meta Database를 초기화 합니다.
+# Meta Database를 초기화 합니다. (초기 계정은 admin / 1234)
 $ make init-db
 
 # Scheduler를 실행합니다.
@@ -58,5 +61,4 @@ help                           사용 가능한 커멘드를 확인합니다
 ```bash
 # pre-commit을 설정합니다.
 $ pre-commit install
-$
 ```
